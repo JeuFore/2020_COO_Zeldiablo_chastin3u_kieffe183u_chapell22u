@@ -7,10 +7,24 @@ class Joueur {
     - vie : int
     - mana : int
     - xp : int
-    + Joueur(String)
+    - collision : boolean
+    - positionX : int 
+    - positionY : int
+    + Joueur(String,int,int)
+    + move(int,int) : void
     + changerVie(int) : void
     + changerMana(int) : void
     + changerXp(int) : void
+    + getVie() : int
+    + getMana() : int
+    + getXp() : int
+    + getPositionX() : int
+    + getPositionY() : int 
+    + setPositionX(int) : void
+    + setPositionY(int) : void
+    + getNom() : String
+    + bloquer() : void
+    + toString() : String
 }
 
 @enduml
