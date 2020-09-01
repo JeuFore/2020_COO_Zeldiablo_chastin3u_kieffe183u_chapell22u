@@ -1,4 +1,4 @@
-public class Joueur {
+public class Joueur{
 
     private int positionX;
     private int positionY;
