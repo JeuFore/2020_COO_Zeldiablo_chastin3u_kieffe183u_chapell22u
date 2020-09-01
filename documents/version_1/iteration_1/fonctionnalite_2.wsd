@@ -20,6 +20,7 @@ class Joueur {
     + getXp() : int
     + getPositionX() : int
     + getPositionY() : int 
+    + getCollision() : boolean
     + setPositionX(int) : void
     + setPositionY(int) : void
     + getNom() : String

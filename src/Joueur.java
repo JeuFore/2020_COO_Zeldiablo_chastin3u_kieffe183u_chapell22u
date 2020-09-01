@@ -153,6 +153,14 @@ public class Joueur extends CClavier {
         this.collision = true;
     }
 
+    public void debloquer(){
+        this.collision = false;
+    }
+
+    public boolean getCollision(){
+        return this.collision;
+    }
+
     /**
      * Méthode qui affiche touts les attributs du joueur
      */

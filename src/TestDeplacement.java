@@ -28,4 +28,22 @@ public class TestDeplacement {
         assertEquals("Le joueur devrait ne pas avoir bouge", 1, j.getPositionX());
         assertEquals("Le joueur devrait ne pas avoir bouge", 1, j.getPositionY());
     }
+
+    @Test
+    public void testDeplacementCollisionOutOFBounds(){
+        Jeu jeu = new Jeu();
+        jeu.gererCollision(jeu.getJoueur().getPositionX()+1, jeu.getJoueur().getPositionY());
+        jeu.getJoueur().move(-1, 0);
+        assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getJoueur().getPositionX());
+        assertEquals("La collision devrait etre active", true, jeu.getJoueur().getCollision());
+    }
+
+    @Test
+    public void testDeplacementCollisionSurUnMur(){
+        Jeu jeu = new Jeu();
+        jeu.gererCollision(jeu.getJoueur().getPositionX()+1, jeu.getJoueur().getPositionY());
+        jeu.getJoueur().move(1, 0);
+        assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getJoueur().getPositionX());
+        assertEquals("La collision devrait etre active", true, jeu.getJoueur().getCollision());
+    }
 }
