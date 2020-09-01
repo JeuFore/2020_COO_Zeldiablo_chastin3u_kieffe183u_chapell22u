@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,7 +10,16 @@ public class Map {
     private ArrayList<Row> map;
 
     public Map(String link) {
-        this.map = load(link);
+        try {
+            File file = new File(link);
+            this.map = load(file);
+        } catch (NullPointerException exception) {
+            System.out.println("The String you gave is null");
+        }
+    }
+
+    public Map(File file) {
+        this.map = load(file);
     }
 
     public ArrayList<Row> getMap() {
@@ -38,11 +48,11 @@ public class Map {
         }
     }
 
-    public static ArrayList<Row> load(String link) {
+    public static ArrayList<Row> load(File file) {
         ArrayList<Row> map = null;
         try {
             ArrayList<String> lines = new ArrayList<String>();
-            BufferedReader buff = new BufferedReader(new FileReader(link));
+            BufferedReader buff = new BufferedReader(new FileReader(file));
             String line = buff.readLine();
             while (line != null) {
                 lines.add(line);
