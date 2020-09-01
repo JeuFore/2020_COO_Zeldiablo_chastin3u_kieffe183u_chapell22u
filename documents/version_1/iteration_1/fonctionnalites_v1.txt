@@ -1,5 +1,12 @@
 Fonctionnalité 1 :
 	ZONE : MURS ; ENVIRONNEMENTS
+	CRITERES DE VALIDATION :
+	Pouvoir créer une carte de jeu, et la charger depuis un fichier extérieur, afin de pouvoir charger différents niveaux.
+	Pouvoir créer certains obstacle non franchissables sur la carte de jeu.
+	
+	TESTS :
+	Tester si le chargement d'un niveau fonctionne
+	Vérifier que l'on peut ajouter des obstacles sur la map
 
 Fonctionnalité 2 : 
 	Création du personnage : NOM ; PV ; STATUS ; PM ; EQUIPEMENT ; XP
