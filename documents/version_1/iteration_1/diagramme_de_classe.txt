@@ -1,0 +1,26 @@
+@startuml
+
+title Map et Row
+
+Map "1" --> "*" Row : - map
+
+class Row {
+    - tiles : ArrayList<Integer>
+    + Row()
+    + Row(ArrayList<Integer>)
+    + getTile(int): int
+    + addTile(int): void
+    + removeTile(int): void
+}
+
+class Map {
+    + Map(String)
+    + getMap() : ArrayList<Row>
+    + isInBounds(int, int) : boolean
+    + getTile(int, int): int
+    + {static} load(String): ArrayList<Row>
+    - {static} convertLinesToMap(String[]): ArrayList<Row>
+}
+
+
+@enduml
