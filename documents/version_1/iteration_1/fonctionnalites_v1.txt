@@ -1,0 +1,27 @@
+Fonctionnalité 1 :
+	ZONE : MURS ; ENVIRONNEMENTS
+
+Fonctionnalité 2 : 
+	Création du personnage : NOM ; PV ; STATUS ; PM ; EQUIPEMENT ; XP
+
+Fonctionnalité 3 : 
+	
+Se déplacer : CRITERES DE VALIDATION
+	      	pouvoir aller dans les 4 points cardinaux avec les touches du clavier ( Z Q S D )
+	      	prendre en comtpe le fait de ne pas traverser les murs ainsi que de ne pas sortir de la ZONE
+	      	modifier la position du personnage (attributs X et Y)
+		On se déplace de la même valeur à chaque fois (une case de zone, en X et Y)
+
+	      TESTS
+		Verifier le déplacement ainsi que la modification des attributs de position (Appuie sur les touches Z Q S D)
+		Verifier l'intéraction avec les murs et les limites de la zone
+		
+		
+		
+
+	      
+
+		
+
+
+
