@@ -10,7 +10,15 @@ Reponsable : chapell22u
 	Vérifier que l'on peut ajouter des obstacles sur la map
 
 Fonctionnalité 2 : 
-	Création du personnage : NOM ; PV ; STATUS ; PM ; EQUIPEMENT ; XP
+Responsable : chastin3u
+	Création du personnage : NOM ; PV ; PM ; XP
+Critères de validation :
+	Avoir la possiblité de crée un joueur. Ce joueur devra avoir diverses propriétés, un nom, des points de vies, 
+	des points de magie (mana) et des points d'expériences.
+	Un joueur peut perdre ou gagner des points de vie, xp ou mana
+Tests :
+	Un joueur ne peut pas avoir de points de vie négatifs, xp ou PM
+	
 
 Fonctionnalité 3 : 
 Responsable : kieffe183u
