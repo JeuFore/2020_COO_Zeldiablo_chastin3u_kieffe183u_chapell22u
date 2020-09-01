@@ -2,31 +2,133 @@ public class Joueur {
 
     private final int POINT_DE_VIE = 10;
 
+    private String nom;
+    private int vie;
+    private int mana;
+    private int xp;
+
     private int positionX;
     private int positionY;
 
-    public Joueur(String nom, int x, int y) {
+    /**
+     * Constructeur de joueur qui initialise
+     * le nom, les pv, mana, xp et coordonnées
+     * du joueur
+     * 
+     * @param nom Nom du joueur
+     * @param x Coordonnée X du joueur
+     * @param y Coordonnée Y du joueur
+     */
+    public Joueur(String n, int x, int y) {
+        this.nom = n;
+        this.vie = POINT_DE_VIE;
+        this.mana = 0;
+        this.xp = 0;
         this.positionX = x;
         this.positionY = y;
     }
 
+    /**
+     * Méthode qui change la vie du joueur
+     * 
+     * @param n Nombre de points de vie ajouter ou enlever du joueur
+     */
+    public void changerVie(int n) {
+        if ((this.vie + n) <= 0)
+            this.vie = 0;
+        else
+            this.vie += n;
+    }
+
+    /**
+     * Méthode qui change le mana du joueur
+     * 
+     * @param n Nombre de points de mana ajouter ou enlever du joueur
+     */
+    public void changerMana(int n) {
+        if ((this.mana + n) <= 0)
+            this.mana = 0;
+        else
+            this.mana += n;
+    }
+
+    /**
+     * Méthode qui change l'xp du joueur
+     * 
+     * @param n Nombre de points de xp ajouter ou enlever du joueur
+     */
+    public void changerXp(int n) {
+        if ((this.xp + n) <= 0)
+            this.xp = 0;
+        else
+            this.xp += n;
+    }
+
+    /**
+     * Méthode qui donne la vie du joueur
+     * 
+     * @return l'attribut vie
+     */
+    public int getVie() {
+        return this.vie;
+    }
+
+    /**
+     * Méthode qui donne le mana du joueur
+     * 
+     * @return l'attribut mana
+     */
+    public int getMana() {
+        return this.mana;
+    }
+
+    /**
+     * Méthode qui donne l'xp du joueur
+     * 
+     * @return l'attribut xp
+     */
+    public int getXp() {
+        return this.xp;
+    }
+
+    /**
+     * 
+     * @param newX
+     * @param newY
+     */
     public void move(int newX, int newY) {
         this.positionX = newX;
         this.positionY = newY;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getPositionX() {
         return this.positionX;
     }
 
+    /**
+     * 
+     * @param x
+     */
     public void setPositionX(int x) {
         this.positionX = x;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getPositionY() {
         return this.positionY;
     }
 
+    /**
+     * 
+     * @param y
+     */
     public void setPositionY(int y) {
         this.positionY = y;
     }
