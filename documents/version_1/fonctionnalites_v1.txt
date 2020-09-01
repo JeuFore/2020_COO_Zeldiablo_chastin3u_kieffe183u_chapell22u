@@ -2,10 +2,7 @@ Fonctionnalité 1 :
 	ZONE : MURS ; ENVIRONNEMENTS
 
 Fonctionnalité 2 : 
-	Création du personnage : NOM ; PV ; STATUS ; PM ; EQUIPEMENT ; XP
+	Création du personnage : NOM ; PV ; (STATUS) ; Point de magie ; (EQUIPEMENT) ; XP
 
 Fonctionnalité 3 : 
 	Se déplacer : pouvoir aller dans les 4 points cardinaux avec les touches du clavier ( Z Q S D ) / prendre en comtpe le fait de pas manger les murs 
-
-
-
