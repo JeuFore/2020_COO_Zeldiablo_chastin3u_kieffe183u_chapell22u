@@ -1,4 +1,5 @@
 Fonctionnalité 1 :
+Reponsable : chapell22u
 	ZONE : MURS ; ENVIRONNEMENTS
 	CRITERES DE VALIDATION :
 	Pouvoir créer une carte de jeu, et la charger depuis un fichier extérieur, afin de pouvoir charger différents niveaux.
@@ -12,7 +13,7 @@ Fonctionnalité 2 :
 	Création du personnage : NOM ; PV ; STATUS ; PM ; EQUIPEMENT ; XP
 
 Fonctionnalité 3 : 
-	
+Responsable : kieffe183u
 Se déplacer : CRITERES DE VALIDATION
 	      	pouvoir aller dans les 4 points cardinaux avec les touches du clavier ( Z Q S D )
 	      	prendre en comtpe le fait de ne pas traverser les murs ainsi que de ne pas sortir de la ZONE
