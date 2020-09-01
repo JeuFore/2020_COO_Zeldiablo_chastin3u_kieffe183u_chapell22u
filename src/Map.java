@@ -1,24 +1,39 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Map {
 
     private int[][] map;
 
     public Map(String link) {
-        BufferedReader buff = this.load(link);
+        int[][] buff = this.load(link);
     }
 
-    public BufferedReader load(String link) {
-        BufferedReader buff = null;
+
+
+    public int[][] load(String link) {
+        ArrayList<String> lines = new ArrayList<String>();
         try {
-            buff = new BufferedReader(new FileReader(link));
+            BufferedReader buff = new BufferedReader(new FileReader(link));
+            String line = buff.readLine();
+            while (line != null) {
+                lines.add(line);
+                line = buff.readLine();
+            }
+            int[][] map = convertLinesToMap((String[])lines.toArray());
         }
         catch (IOException ioe) {
             System.out.println("This map does not exist");
         }
-        return buff;
+        return lines.toArray();
     }
+    
+    private static int[][] convertLinesToMap(String[] lines) {
+        
+    }
+
+    public void update(BufferedReader)
 
 }
