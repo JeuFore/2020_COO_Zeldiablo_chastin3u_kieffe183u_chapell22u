@@ -5,7 +5,6 @@ public class Row {
     private ArrayList<Integer> tiles;
 
     public Row(ArrayList<Integer> integers) {
-        this.tiles = new ArrayList<Integer>();
         this.tiles = integers;
     }
 
@@ -26,8 +25,8 @@ public class Row {
         this.tiles.add(tile);
     }
 
-    public void removeTile(int tile) {
-        this.tiles.remove(tile);
+    public void removeTile() {
+        this.tiles.remove(this.tiles.size() - 1);
     }
     
 }
