@@ -9,7 +9,6 @@ public class Joueur {
 
     private int positionX;
     private int positionY;
-    private boolean collision;
 
     /**
      * Constructeur de joueur qui initialise
@@ -91,18 +90,9 @@ public class Joueur {
         return this.xp;
     }
 
-    /**
-     * 
-     * @param newX
-     * @param newY
-     */
-    public void move(int newX, int newY) {
-        this.positionX = newX;
-        this.positionY = newY;
-    }
 
     /**
-     * 
+     * Methode qui rend la position en X du joueur 
      * @return
      */
     public int getPositionX() {
@@ -110,7 +100,7 @@ public class Joueur {
     }
 
     /**
-     * 
+     * Methode setter de la position X du joueur 
      * @param x
      */
     public void setPositionX(int x) {
@@ -118,7 +108,7 @@ public class Joueur {
     }
 
     /**
-     * 
+     * Methode qui rend la position Y du joueur 
      * @return
      */
     public int getPositionY() {
@@ -126,15 +116,19 @@ public class Joueur {
     }
 
     /**
-     * 
+     * Methode setter de la position Y du joueur 
      * @param y
      */
     public void setPositionY(int y) {
         this.positionY = y;
     }
 
-    public int getVie(){
-        return POINT_DE_VIE;
+    /**
+     * Metgode qui rend le nom du joueur 
+     * @return le nom du joueur
+     */
+    public String getNom(){
+        return this.nom;
     }
 
 }
