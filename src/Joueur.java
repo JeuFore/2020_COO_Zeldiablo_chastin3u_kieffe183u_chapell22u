@@ -1,4 +1,4 @@
-public class Joueur {
+public class Joueur extends CClavier {
 
     private final int POINT_DE_VIE = 10;
 
@@ -6,6 +6,7 @@ public class Joueur {
     private int vie;
     private int mana;
     private int xp;
+    private boolean collision;
 
     private int positionX;
     private int positionY;
@@ -27,6 +28,19 @@ public class Joueur {
         this.positionX = x;
         this.positionY = y;
     }
+
+    /**
+     * Methode de deplacement du joueur
+     * @param x
+     * @param y
+     */
+    public void move(int x, int y){
+        if(!collision){
+            this.positionX = x;
+            this.positionY =y;
+        }
+    }
+
     /**
      * Méthode qui change la vie du joueur
      * 
@@ -129,6 +143,10 @@ public class Joueur {
      */
     public String getNom(){
         return this.nom;
+    }
+
+    public void bloquer(){
+        this.collision = true;
     }
 
 }
