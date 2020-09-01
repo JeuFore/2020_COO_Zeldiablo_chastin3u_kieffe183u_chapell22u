@@ -1,0 +1,20 @@
+Fonctionnalité 1 : 
+	Se déplacer : pouvoir aller dans les 4 points cardinaux avec les touches du clavier ( Z Q S D ) / prendre en comtpe le fait de pas manger les murs 
+
+Fonctionnalité 2 : 
+	Création du personnage : NOM ; PV ; STATUS ; PM ; EQUIPEMENT ; XP
+
+Fonctionnalité 3 : 
+	MONSTRE : NOM ; PV ; STATUS ; PM 
+
+Fonctionnalité 4 :
+	ZONE : MURS ; POURCENTAGE de rencontre des monstres ; POINT DE SAUVEGARDE ; ENVIRONNEMENT
+
+Fonctionnalité 5 : 
+	COMBAT : Tour par tour ; Attaque Magique ou Physique ; gérer la mort ; possibilité de fuir ( pourcentage genre 50 % ), de se soigner, gagner de l'expérience à la fin des combats
+
+Fonctionnalité 6 : 
+	SYSTEME DE GROUPE : groupe de monstres ou groupes de personnages (pas trop de 1v1 frr)
+
+Fonctionnalité 7 :
+	JEU : Système de sauvegarde ; Système d'option (régler taille de la fenetre pour faire plaisir à matis) ; pub (pour faire plaisir à Tristan Belmont (RIP en paix à lui))
