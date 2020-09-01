@@ -12,13 +12,12 @@ public class Joueur extends CClavier {
     private int positionY;
 
     /**
-     * Constructeur de joueur qui initialise
-     * le nom, les pv, mana, xp et coordonnées
+     * Constructeur de joueur qui initialise le nom, les pv, mana, xp et coordonnées
      * du joueur
      * 
      * @param nom Nom du joueur
-     * @param x Coordonnée X du joueur
-     * @param y Coordonnée Y du joueur
+     * @param x   Coordonnée X du joueur
+     * @param y   Coordonnée Y du joueur
      */
     public Joueur(String n, int x, int y) {
         this.nom = n;
@@ -31,13 +30,14 @@ public class Joueur extends CClavier {
 
     /**
      * Methode de deplacement du joueur
+     * 
      * @param x
      * @param y
      */
-    public void move(int x, int y){
-        if(!collision){
-            this.positionX = x;
-            this.positionY =y;
+    public void move(int x, int y) {
+        if (!collision) {
+            this.positionX += x;
+            this.positionY += y;
         }
     }
 
@@ -104,9 +104,9 @@ public class Joueur extends CClavier {
         return this.xp;
     }
 
-
     /**
-     * Methode qui rend la position en X du joueur 
+     * Methode qui rend la position en X du joueur
+     * 
      * @return
      */
     public int getPositionX() {
@@ -114,7 +114,8 @@ public class Joueur extends CClavier {
     }
 
     /**
-     * Methode setter de la position X du joueur 
+     * Methode setter de la position X du joueur
+     * 
      * @param x
      */
     public void setPositionX(int x) {
@@ -122,7 +123,8 @@ public class Joueur extends CClavier {
     }
 
     /**
-     * Methode qui rend la position Y du joueur 
+     * Methode qui rend la position Y du joueur
+     * 
      * @return
      */
     public int getPositionY() {
@@ -130,7 +132,8 @@ public class Joueur extends CClavier {
     }
 
     /**
-     * Methode setter de la position Y du joueur 
+     * Methode setter de la position Y du joueur
+     * 
      * @param y
      */
     public void setPositionY(int y) {
@@ -138,16 +141,17 @@ public class Joueur extends CClavier {
     }
 
     /**
-     * Metgode qui rend le nom du joueur 
+     * Metgode qui rend le nom du joueur
+     * 
      * @return le nom du joueur
      */
-    public String getNom(){
+    public String getNom() {
         return this.nom;
     }
 
-
-    public void bloquer(){
+    public void bloquer() {
         this.collision = true;
+    }
 
     /**
      * Méthode qui affiche touts les attributs du joueur
