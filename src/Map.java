@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Map {
 
@@ -48,7 +49,7 @@ public class Map {
                 line = buff.readLine();
             }
             buff.close();
-            map = convertLinesToMap((String[])lines.toArray());
+            map = convertLinesToMap(Arrays.asList(lines.toArray()).toArray(new String[lines.toArray().length]));
         }
         catch (IOException ioe) {
             System.out.println("This map does not exist");
