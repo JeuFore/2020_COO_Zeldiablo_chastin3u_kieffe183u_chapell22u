@@ -131,4 +131,13 @@ public class Joueur {
         return this.nom;
     }
 
+    /**
+     * Méthode qui affiche touts les attributs du joueur
+     */
+    public String toString() {
+        return "Le joueur " + this.nom + " a\n - " + this.vie + " points de vie\n - " + this.mana
+                + " points de mana\n - " + this.xp + " points d'xp\n - Coordonnées(" + this.positionX + ", "
+                + this.positionY + ")";
+    }
+
 }
