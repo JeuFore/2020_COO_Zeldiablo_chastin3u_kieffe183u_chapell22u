@@ -25,6 +25,7 @@ Responsable : kieffe183u
 Se déplacer : CRITERES DE VALIDATION
 	      	Le personnage peut se déplacer dans les 4 directions.
 		Il peut s'arrêter en cas de collision.
+		Il doit se deplacer avec les touches Z Q S D du clavier 
 
 	      TESTS
 		Verifier le déplacement ainsi que la modification des attributs de position
