@@ -1,0 +1,16 @@
+@startuml
+
+title Joueur
+
+class Joueur {
+    - nom : String
+    - vie : int
+    - mana : int
+    - xp : int
+    + Joueur(String)
+    + changerVie(int) : void
+    + changerMana(int) : void
+    + changerXp(int) : void
+}
+
+@enduml
