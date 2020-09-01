@@ -1,4 +1,4 @@
-public class Joueur extends CClavier {
+public class Joueur {
 
     private final int POINT_DE_VIE = 10;
 
@@ -9,23 +9,6 @@ public class Joueur extends CClavier {
     public Joueur(String nom, int x, int y) {
         this.positionX = x;
         this.positionY = y;
-    }
-
-    public void move() {
-        if (!collision){
-            if (isPressed(90)){
-                this.positionY += 1;
-            }
-            if (isPressed(81)){
-                this.positionX -= 1;
-            }
-            if (isPressed(83)){
-                this.positionY -= 1;
-            }
-            if (isPressed(68)){
-                this.positionX += 1;
-            }
-        }
     }
 
     public int getPositionX() {
