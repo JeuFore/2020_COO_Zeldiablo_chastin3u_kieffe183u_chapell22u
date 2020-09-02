@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.Test;
 
-import code.Joueur;
+import code.characters.Character;
 
 import static org.junit.Assert.*;
 
