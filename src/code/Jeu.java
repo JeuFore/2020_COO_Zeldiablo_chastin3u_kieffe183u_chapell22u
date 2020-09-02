@@ -9,7 +9,7 @@ import code.characters.Character;
 
 public class Jeu extends CClavier{
     
-    private Joueur j;
+    private Character j;
     private Map carte;
 
     /**
@@ -19,7 +19,7 @@ public class Jeu extends CClavier{
      */
     public Jeu(){
        // Scanner sc = new Scanner(System.in);
-        this.j = new Joueur("Bruno", 0, 0);
+        this.j = new Advanturer("Bruno",10, 0, 0);
         File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
         //sc.close();
@@ -30,8 +30,8 @@ public class Jeu extends CClavier{
      * Contructeur de la classe Jeu
      * Cela creer charge une map selon la file donnee ainsi qu'un joueur
      */
-    public Jeu(File file, Joueur joueur){
-         this.j = joueur;
+    public Jeu(File file, Character c){
+         this.j = c;
          this.carte = new Map(file);
      }
 
@@ -41,26 +41,35 @@ public class Jeu extends CClavier{
      * Methode de commande lorsque l'on appuie sur les touches du clavier
      */
     public void commande(code.moteurJeu.moteur.CClavier clavier){
+    	if(j instanceof PlayableCharacter) {
+    		
             if(clavier.isPressed(83)){
-                gererCollision(j.getPositionX(), j.getPositionY()+1);
+                gererCollision(j.getPosition().getX(), j.getPosition().getY()+1);
                 j.move(0, 1);
+                gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
                 j.setFacing(4);
             }
             if(clavier.isPressed(81)){
-                gererCollision(j.getPositionX()-1, j.getPositionY());
+                gererCollision(j.getPosition().getX()-1, j.getPosition().getY());
                 j.move(-1,0);
+                gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
                 j.setFacing(5);
             }
             if(clavier.isPressed(90)){
-                gererCollision(j.getPositionX(), j.getPositionY()-1);
+                gererCollision(j.getPosition().getX(), j.getPosition().getY()-1);
                 j.move(0, -1);
+                gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
                 j.setFacing(7);
             }
             if(clavier.isPressed(68)){
-                gererCollision(j.getPositionX()+1, j.getPositionY());
+                gererCollision(j.getPosition().getX()+1, j.getPosition().getY());
                 j.move(1, 0);
+                gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
                 j.setFacing(6);
             }
+    	} else if (j instanceof NonPlayableCharacter) {
+    		
+    	}
     }
 
     /**
@@ -86,7 +95,7 @@ public class Jeu extends CClavier{
      * Methode de getter du joueur 
      * @return le joueur de Jeu
      */
-    public Joueur getJoueur(){
+    public Character getJoueur(){
         return this.j;
     }
 
@@ -102,7 +111,7 @@ public class Jeu extends CClavier{
      * Methode pour gerer le passage sur une case declencheur  
      * @param x,y
      */
-       public void gererDeclencheur(int x, int y, Character c){
+       public  void gererDeclencheur(int x, int y, Character c){
 
         if (carte.getTile(c.getPosition().getX(),c.getPosition().getY()) == 2){
             c.changerVie(-2);
