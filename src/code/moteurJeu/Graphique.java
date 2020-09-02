@@ -1,4 +1,4 @@
-package code;
+package code.moteurJeu;
 
 import java.awt.image.BufferedImage;
 
@@ -6,13 +6,14 @@ import code.moteurJeu.moteur.DessinAbstract;
 
 import java.awt.*;
 
-import code.moteurJeu.sprite.*;
+import code.moteurJeu.sprite.Sprites;
+import code.jeu.*;
 
-public class Dessin implements DessinAbstract {
+public class Graphique implements DessinAbstract {
 
     private Jeu jeu;
 
-    public Dessin(Jeu j) {
+    public Graphique(Jeu j) {
         this.jeu = j;
     }
 
@@ -36,6 +37,10 @@ public class Dessin implements DessinAbstract {
                 joueur.getFacingProperty().getSpriteName() + "_" + joueur.getFacingProperty().getId() + "_"
                         + joueur.getFacingProperty().getView(),
                 joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
+
+        if(this.jeu.getActualBlock().getActif())
+            Sprites.dessinerCentre(graphics, this.jeu.getActualBlock().getNom()+"_" + this.jeu.getActualBlock().getEtat() + "_0",
+                    joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
 
         graphics.dispose();
     }

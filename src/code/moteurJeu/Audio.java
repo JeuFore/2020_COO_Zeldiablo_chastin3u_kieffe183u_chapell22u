@@ -1,4 +1,4 @@
-package code;
+package code.moteurJeu;
 
 import java.io.File;
 
@@ -7,7 +7,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class Audio {
-    
+
     public static void play(String path) {
         try {
             File file = new File(path);
@@ -16,15 +16,11 @@ public class Audio {
                 Clip clip = AudioSystem.getClip();
                 clip.open(audio);
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
-                System.out.println("oui");
-            }
-            else {
+            } else {
                 System.out.println("La musique demandée n'existe pas");
             }
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             System.out.println("La musique demandée n'a pas pu être chargée");
         }
     }
-
 }

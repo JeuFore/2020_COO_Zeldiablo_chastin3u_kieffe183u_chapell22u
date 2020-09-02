@@ -2,6 +2,9 @@ package code;
 
 import code.moteurJeu.moteur.MoteurGraphique;
 import code.moteurJeu.sprite.Sprites;
+import code.moteurJeu.*;
+
+import code.jeu.Jeu;
 
 public class App {
 
@@ -11,13 +14,15 @@ public class App {
 
         Sprites.chargerFeuille("tank", "./documents/images/tank_tiles.png", 22, 12);
 
+        Sprites.chargerFeuille("trap", "./documents/images/trap.png", 5, 1);
+
         Jeu jeu = new Jeu();
 
-        Dessin d = new Dessin(jeu);
-        JeuControleur j = new JeuControleur(jeu);
-    
-        MoteurGraphique m = new MoteurGraphique(j, d);
-    
+        Graphique graphique = new Graphique(jeu);
+        JeuControleur jeuControleur = new JeuControleur(jeu);
+
+        MoteurGraphique m = new MoteurGraphique(jeuControleur, graphique);
+
         Audio.play("src/audio/theme.wav");
         m.lancerJeu(900, 900, 10);
     }

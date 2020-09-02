@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import code.Row;
+import code.jeu.Row;
 
 public class TestRow {
 

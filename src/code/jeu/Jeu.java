@@ -1,4 +1,4 @@
-package code;
+package code.jeu;
 
 //import java.util.Scanner;
 import java.io.File;
@@ -12,6 +12,10 @@ public class Jeu {
     private Character j;
     private Map carte;
 
+    private BlocksList blocksList;
+
+    private Block actualBlock;
+
     /**
      * 
      * Contructeur de la classe Jeu Cela creer une map et un joueur par défaut
@@ -19,9 +23,11 @@ public class Jeu {
 
     public Jeu() {
         // Scanner sc = new Scanner(System.in);
-        this.j = new Advanturer("Bob", 10, 1, 1);
+        this.j = new Wizard("Bob", 10, 1, 1, 10);
         File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
+        this.blocksList = new BlocksList();
+        this.actualBlock = new Block("Vide", 0, -1);
         // sc.close();
     }
 
@@ -46,30 +52,27 @@ public class Jeu {
             if (clavier.isPressed(83)) {
                 gererCollision(j.getPosition().getX(), j.getPosition().getY() + 1);
                 j.move(0, 1);
-                gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
                 j.setFacingView(0);
             }
             if (clavier.isPressed(81)) {
                 gererCollision(j.getPosition().getX() - 1, j.getPosition().getY());
                 j.move(-1, 0);
-                gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
                 j.setFacingView(1);
             }
             if (clavier.isPressed(90)) {
                 gererCollision(j.getPosition().getX(), j.getPosition().getY() - 1);
                 j.move(0, -1);
-                gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
                 j.setFacingView(3);
             }
             if (clavier.isPressed(68)) {
                 gererCollision(j.getPosition().getX() + 1, j.getPosition().getY());
                 j.move(1, 0);
-                gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
                 j.setFacingView(2);
             }
         } else if (j instanceof NonPlayableCharacter) {
 
         }
+        gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
     }
 
     /**
@@ -115,11 +118,27 @@ public class Jeu {
      * 
      * @param x,y,c
      */
-    public void gererDeclencheur(int x, int y, Character c) {
+    public void gererDeclencheur(int x, int y, Character character) {
 
-        if (carte.getTile(c.getPosition().getX(), c.getPosition().getY()) == 2) {
+        int number = carte.getTile(character.getPosition().getX(), character.getPosition().getY());
+
+        this.actualBlock.changerEtat();
+        
+        if(number != 0){
+            this.actualBlock = this.blocksList.getBlock(number);
+            this.actualBlock.activer();
+            character.changerVie(this.actualBlock.getDegat());
+        }
+
+        /**
+        if (this.explosion != 5)
+            this.explosion++;
+
+        if (carte.getTile(c.getPosition().getX(), c.getPosition().getY()) == 2 && this.explosion == 5) {
             c.changerVie(-2);
             System.out.println("Aie le piege... -2 points de vie.");
+            this.explosion = 0;
+
         } else if (c instanceof NonPlayableCharacter) {
             System.out.println("Quelqu un d autre a perdu de la vie... Prenez l avantage!");
         }
@@ -131,6 +150,12 @@ public class Jeu {
                 System.out.println("Attention quelqu un d autre a recupere de la vie ... ");
             }
         }
+
+        */
+    }
+
+    public Block getActualBlock() {
+        return this.actualBlock;
     }
 
 }

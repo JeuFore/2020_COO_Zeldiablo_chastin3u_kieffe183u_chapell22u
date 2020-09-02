@@ -9,8 +9,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import code.Map;
-import code.Row;
+import code.jeu.*;
 
 public class TestMap {
 
