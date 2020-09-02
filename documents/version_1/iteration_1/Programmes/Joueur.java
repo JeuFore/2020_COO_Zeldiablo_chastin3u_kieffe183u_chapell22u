@@ -38,6 +38,7 @@ public class Joueur {
         if (!collision) {
             this.positionX += x;
             this.positionY += y;
+            Jeu.gererDeclencheur(this.positionX, this.positionY, this);
         }
     }
 

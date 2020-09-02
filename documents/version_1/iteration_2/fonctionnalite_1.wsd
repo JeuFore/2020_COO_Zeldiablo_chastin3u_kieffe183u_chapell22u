@@ -1,0 +1,54 @@
+@startuml
+
+title Joueur Map et Jeu
+
+Jeu "1" --> "1" Map : - carte
+Jeu "1" --> "1" Joueur : - j
+
+class Joueur {
+    - nom : String
+    - vie : int
+    - mana : int
+    - xp : int
+    - collision : boolean
+    - positionX : int 
+    - positionY : int
+    + Joueur(String,int,int)
+    + move(int,int) : void
+    + changerVie(int) : void
+    + changerMana(int) : void
+    + changerXp(int) : void
+    + getVie() : int
+    + getMana() : int
+    + getXp() : int
+    + getPositionX() : int
+    + getPositionY() : int 
+    + getCollision() : boolean
+    + setPositionX(int) : void
+    + setPositionY(int) : void
+    + getNom() : String
+    + bloquer(boolean) : void
+    + toString() : String
+}
+
+class Map {
+    + Map(String)
+    + getMap() : ArrayList<Row>
+    + isInBounds(int, int) : boolean
+    + getTile(int, int): int
+    + {static} load(String): ArrayList<Row>
+    - {static} convertLinesToMap(String[]): ArrayList<Row>
+}
+
+class Jeu {
+    +Jeu()
+    +Jeu(FIle,Joueur)
+    +commande() : void
+    +gererCollision(int,int) : void
+    +getJoueur() : Joueur
+    -getFile(String) : file
+    +getMap() : ArrayList<Row>
+    +gererDeclencheur(int, int, Character)
+}
+
+@enduml

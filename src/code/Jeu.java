@@ -98,7 +98,7 @@ public class Jeu extends CClavier{
      * Methode pour gerer le passage sur une case declencheur  
      * @param x,y
      */
-       public void gererDeclencheur(int x, int y, Character c){
+       public static void gererDeclencheur(int x, int y, Character c){
 
         if (carte.getTile(c.getPosition().getX(),c.getPosition.getY()) == 2){
             c.changerVie(-2);
