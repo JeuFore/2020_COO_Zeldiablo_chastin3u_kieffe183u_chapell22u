@@ -127,7 +127,7 @@ public abstract class Character {
      * @param n nombre de points de vie
      */
     public void changerVie(int n) {
-        this.vie = (this.vie + n <= 0) ? 0 : n;
+        this.vie = Math.max(this.vie + n, 0);
     }
 
     /**

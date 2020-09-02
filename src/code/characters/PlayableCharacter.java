@@ -15,8 +15,7 @@ public class PlayableCharacter extends Character implements Playable {
 
     @Override
     public void changerXP(int xp) {
-        this.xp += xp;
-
+        this.xp = Math.max(this.xp + xp, 0);
     }
 
     @Override
