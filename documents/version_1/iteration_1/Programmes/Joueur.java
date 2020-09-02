@@ -1,4 +1,4 @@
-public class Joueur extends CClavier {
+public class Joueur {
 
     private final int POINT_DE_VIE = 10;
 
