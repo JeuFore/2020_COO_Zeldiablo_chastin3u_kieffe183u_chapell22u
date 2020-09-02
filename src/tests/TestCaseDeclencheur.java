@@ -3,7 +3,6 @@ package tests;
 import org.junit.Test;
 
 import code.Jeu;
-import code.Joueur;
 import code.characters.Advanturer;
 
 import static org.junit.Assert.*;

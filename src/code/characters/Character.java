@@ -133,7 +133,11 @@ public abstract class Character {
      * @param n nombre de points de vie
      */
     public void changerVie(int n) {
-        this.vie = (this.vie + n <= 0) ? 0 : n;
+        if (this.vie + n <= 0) {
+            this.vie = 0;
+        } else {
+            this.vie += n;
+        }
     }
 
     /**
