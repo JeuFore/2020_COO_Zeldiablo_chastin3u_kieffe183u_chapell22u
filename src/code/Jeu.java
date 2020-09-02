@@ -2,6 +2,7 @@ package code;
 //import java.util.Scanner;
 import java.io.File;
 import java.util.Arrays;
+import charcaters.*;
 
 public class Jeu extends CClavier{
     
@@ -24,10 +25,10 @@ public class Jeu extends CClavier{
     /**
      * 
      * Contructeur de la classe Jeu
-     * Cela creer charge une map selon la file donnee
+     * Cela creer charge une map selon la file donnee ainsi qu'un joueur
      */
-    public Jeu(File file){
-         this.j = new Joueur("Bruno", 0, 0);
+    public Jeu(File file, Joueur joueur){
+         this.j = joueur
          this.carte = new Map(file);
      }
 
@@ -87,6 +88,30 @@ public class Jeu extends CClavier{
      * @return la Map du jeu  
      */
     public Map getMap(){
-        return this.carte;
+        return this.carte.getMap();
     }
+
+    /**
+     * Methode pour gerer le passage sur une case declencheur  
+     * @param x,y
+     */
+       public void gererDeclencheur(int x, int y, Character c){
+
+        if (carte.getTile(c.getPosition().getX(),c.getPosition.getY()) == 2){
+            c.changerVie(-2);
+            System.outprint.println("Aie le piege... -2 points de vie.");
+            else if (c instanceof UnplayableCharacter){
+                System.outprint.println("Quelqu un d autre a perdu de la vie... Prenez l avantage!");
+            }
+        }
+        if ((carte.getTile(c.getPosition().getX(),c.getPosition.getY()) == 3){
+            c.changerVie(2);
+            if(c instanceof PlayableCharacter)
+            System.outprint.println("Tu as trouve une fontaine de soin, +2 points de vie!");
+            else if (c instanceof UnplayableCharacter){
+                System.outprint.println("Attention quelqu un d autre a recupere de la vie ... ");
+            }
+        }
+    }
+
 }
