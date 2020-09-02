@@ -1,0 +1,11 @@
+@startuml
+Jeu -> Character : move(1, 1)
+Character --> Character : collision
+alt successful case
+    Character -> Position : changerX(1)
+    Position --> Character : changerX(1)
+    Character -> Position : changerY(1)
+    Position --> Character : changerY(1)
+end
+Character --> Jeu : Personnage\ndéplacé
+@enduml
