@@ -1,4 +1,4 @@
-
+package code;
 //import java.util.Scanner;
 import java.io.File;
 import java.util.Arrays;
@@ -16,21 +16,20 @@ public class Jeu extends CClavier{
     public Jeu(){
        // Scanner sc = new Scanner(System.in);
         this.j = new Joueur("Bruno", 0, 0);
-        File file = getFile("map/tests/level_3.txt");
+        File file = new File("map/tests/level_3.txt");
         this.carte = new Map(file);
         //sc.close();
     }
 
     /**
-     * Methode qui retourne le fichier correspondant au path donnees (probleme de path avec les tests)
-     * @param path
-     * @return le Fichier correspondant
+     * 
+     * Contructeur de la classe Jeu
+     * Cela creer charge une map selon la file donnee
      */
-    private File getFile(String path) {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(path).getFile());
-        return file;
-    }
+    public Jeu(File file){
+         this.j = new Joueur("Bruno", 0, 0);
+         this.carte = new Map(file);
+     }
 
 
     /**

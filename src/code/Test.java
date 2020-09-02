@@ -1,3 +1,5 @@
+package code;
+
 public class Test {
     public static void main(String[] args) {
         Map map = new Map("../documents/map/level_1.txt");
