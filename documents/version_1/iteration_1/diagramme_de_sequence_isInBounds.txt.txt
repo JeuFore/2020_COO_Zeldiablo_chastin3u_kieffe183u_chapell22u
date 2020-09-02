@@ -1,0 +1,6 @@
+@startuml
+Jeu -> Map : isInBounds(1, 4)
+Map -> Row : getTile(1)
+Map <- Row : 0
+Jeu <- Map : 1
+@enduml

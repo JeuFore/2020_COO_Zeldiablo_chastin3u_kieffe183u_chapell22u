@@ -60,13 +60,13 @@ public class Jeu extends CClavier{
      * 
      */
     public void gererCollision(int x, int y){
-        int[] tab = {-1,1};
+        String[] tab = {"-1","1"};
         if (!carte.isInBounds(x, y)){
             j.bloquer(true);
         } else {
             j.bloquer(false);
         }
-        if (Arrays.stream(tab).anyMatch(carte.getTile(x, y)::equals)){
+        if (Arrays.stream(tab).anyMatch(("" + carte.getTile(x, y))::equals)){
             j.bloquer(true);
         } else {
             j.bloquer(false);
