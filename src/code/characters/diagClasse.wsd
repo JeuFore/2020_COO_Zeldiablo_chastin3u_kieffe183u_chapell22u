@@ -1,0 +1,74 @@
+@startuml
+
+title Diagramme de classe du package characters
+
+Character "1" --> "1" Position : - carte
+
+abstract class Character {
+    + Character(String, int, int, int)
+    - nom: String
+    - vie: int
+    - collision: boolean
+    - facing: int
+    + getVie(): int
+    + getCollision(): boolean
+    + getNom(): String
+    + getPosition(): Position
+    + setPosition(Position): void
+    + setVie(int): void 
+    + move(int, int): void
+    + changerVie(int n): void
+    + bloquer(boolean): void
+    + setFacing(int): int
+    + toString(): String
+}
+
+interface Playable {
+    + setXP(int): void
+    + changerXP(int): void
+    + getXP(): int
+}
+
+interface MagicPower {
+    + changerMana(int) : void
+    + setMana(int): void
+    + getMana(): int
+}
+
+abstract class NonPlayableCharacter extends Character {
+    + NonPlayableCharacter(String, int, int, int)
+    + toString(): String
+}
+abstract class PlayableCharacter extends Character implements Playable {
+    - xp: int;
+    + NonPlayableCharacter(String, int, int, int)
+    + toString(): String
+}
+
+class Advanturer extends PlayableCharacter {
+    + Advanturer(String, int, int, int)
+    + toString(): String
+}
+class Wizard extends PlayableCharacter implements MagicPower {
+    - mana: int
+    + Wizard(String, int, int, int, int)
+    + toString(): String
+}
+
+class Monster extends NonPlayableCharacter {
+    + Monster(String, int, int, int)
+    + toString(): String
+}
+
+class Position {
+    + Position()
+    + Position(int, int)
+    - x: int
+    - y: int
+    + getX(): int
+    + getY(): int
+    + changerX(int): void
+    + changerY(int): void
+}
+
+@enduml

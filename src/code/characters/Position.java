@@ -30,6 +30,14 @@ public class Position {
         this.x = x;
     }
 
+    public void changerX(int x) {
+        this.x += x;
+    }
+
+    public void changerY(int y) {
+        this.y += y;
+    }
+
     
     
 }
