@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 public class TestDeplacement {
 
+    
     @Test
     public void testDeplacementSurX(){
         Joueur j = new Joueur("Bob", 1, 1);

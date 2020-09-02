@@ -14,8 +14,20 @@ public class Jeu extends CClavier{
     public Jeu(){
        // Scanner sc = new Scanner(System.in);
         this.j = new Joueur("Bruno", 0, 0);
-        this.carte = new Map("map/tests/level_3");
+        File file = getFile("map/tests/level_3.txt")
+        this.carte = new Map(file);
         //sc.close();
+    }
+
+    /**
+     * Methode qui retourne le fichier correspondant au path donnees (probleme de path avec les tests)
+     * @param path
+     * @return le Fichier correspondant
+     */
+    private File getFile(String path) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(path).getFile());
+        return file;
     }
 
 
@@ -50,14 +62,14 @@ public class Jeu extends CClavier{
     public void gererCollision(int x, int y){
         int[] tab = {-1,1};
         if (!carte.isInBounds(x, y)){
-            j.bloquer();
+            j.bloquer(true);
         } else {
-            j.debloquer();
+            j.bloquer(false);
         }
         if (Arrays.stream(tab).anyMatch(carte.getTile(x, y)::equals)){
-            j.bloquer();
+            j.bloquer(true);
         } else {
-            j.debloquer();
+            j.bloquer(false);
         }
     }
 

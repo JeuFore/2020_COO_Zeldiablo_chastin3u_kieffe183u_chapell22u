@@ -149,12 +149,8 @@ public class Joueur extends CClavier {
         return this.nom;
     }
 
-    public void bloquer() {
-        this.collision = true;
-    }
-
-    public void debloquer(){
-        this.collision = false;
+    public void bloquer(boolean bool) {
+        this.collision = bool;
     }
 
     public boolean getCollision(){

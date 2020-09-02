@@ -1,6 +1,9 @@
 @startuml
 
-title Joueur
+title Joueur Map et Jeu
+
+Jeu "1" --> "1" Map : - carte
+Jeu "1" --> "1" Joueur : - j
 
 class Joueur {
     - nom : String
@@ -28,5 +31,22 @@ class Joueur {
     + toString() : String
 }
 
+class Map {
+    + Map(String)
+    + getMap() : ArrayList<Row>
+    + isInBounds(int, int) : boolean
+    + getTile(int, int): int
+    + {static} load(String): ArrayList<Row>
+    - {static} convertLinesToMap(String[]): ArrayList<Row>
+}
+
+class Jeu {
+    +Jeu()
+    +commande() : void
+    +gererCollision(int,int) : void
+    +getJoueur() : Joueur
+    -getFile(String) : file
+    +getMap() : Map
+}
 
 @enduml
