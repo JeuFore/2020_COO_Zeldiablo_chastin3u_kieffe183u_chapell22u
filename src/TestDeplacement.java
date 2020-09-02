@@ -46,4 +46,13 @@ public class TestDeplacement {
         assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getJoueur().getPositionX());
         assertEquals("La collision devrait etre active", true, jeu.getJoueur().getCollision());
     }
+
+    @Test
+    public void testDeplacementDansLeVide(){
+        Jeu jeu = new Jeu();
+        jeu.gererCollision(jeu.getJoueur().getPositionX()+1, jeu.getJoueur().getPositionY());
+        jeu.getJoueur().move(0, -1);
+        assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getJoueur().getPositionY());
+        assertEquals("La collision devrait etre active", true, jeu.getJoueur().getCollision());
+    }
 }
