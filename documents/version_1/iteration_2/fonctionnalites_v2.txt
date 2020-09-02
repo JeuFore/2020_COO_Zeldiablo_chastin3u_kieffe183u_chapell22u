@@ -1,0 +1,30 @@
+FONCTIONNALITE 1 : CASES DECLENCHEURS / PIEGES
+RESPONSABLE : kieffe183u
+
+Critères de validation :Les cases sont traversables par les joueurs / monstres 
+			Lorqu'un une entité marche dessus, cela déclenche un effet 
+			L'effet se traduit par un message dans la console 
+			  
+
+Tests : On vérifie que les entités peuvent passer par ses cases 
+	On vérifie que quand une entité marche sur une case cela déclenche l'effet 
+
+FONCTIONNALITE 2 : CREATIONS DE MONSTRES 
+RESPONSABLE : chapell22u
+
+Critères de validation : Il est possible deconstruire un labyrinthe contenant quelques monstres 
+			 Les monstres sont créés sur des cases vides
+			 Il n'est pas possible de générer des monstres surdes cases non vides(position du joueur,d'autres monstres ou de murs)
+
+Tests : Lorsqu'on créer un monstre, on vérifie qu'il ne peut pas être sur une case non vide
+	On vérifie que le monstre a des statistiques et qu'elles peuvent être modifiées  
+
+FONCTIONNALITE 3 : CREATIONS D UNE INTERFACE GRAPHIQUE 
+RESPONSABLE : chastin3u
+
+Critères de validation : Il est possible de générer un labyrinthe graphiquement avec des murs.
+			 Il est possible de générer un personnage graphiquement dans le labyrinthe. 
+
+Tests : Lorsqu'on lance le programme on peut y voir le labyrinthe passé en paramètre 
+	Lorsqu'on lance le programme on peut y voir le personnage passé en paramètre 
+
