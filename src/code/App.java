@@ -20,6 +20,6 @@ public class App {
     
         MoteurGraphique m = new MoteurGraphique(j, d);
     
-        m.lancerJeu(900, 900, 10);
+        m.lancerJeu(900, 900, 100);
     }
 }

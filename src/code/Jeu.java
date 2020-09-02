@@ -94,9 +94,9 @@ public class Jeu extends CClavier {
     }
 
     /**
-     * Methode de getter du joueur
+     * Methode de getter du character
      * 
-     * @return le joueur de Jeu
+     * @return le character de Jeu
      */
     public Character getJoueur() {
         return this.j;
@@ -114,7 +114,7 @@ public class Jeu extends CClavier {
     /**
      * Methode pour gerer le passage sur une case declencheur
      * 
-     * @param x,y
+     * @param x,y,c
      */
        public  void gererDeclencheur(int x, int y, Character c){
 
