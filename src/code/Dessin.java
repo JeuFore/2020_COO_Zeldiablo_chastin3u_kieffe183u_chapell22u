@@ -1,7 +1,6 @@
 package code;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import code.moteurJeu.moteur.DessinAbstract;
 
@@ -11,10 +10,10 @@ import code.moteurJeu.sprite.*;
 
 public class Dessin implements DessinAbstract {
 
-    private Map map;
+    private Jeu jeu;
 
-    public Dessin(Map m) {
-        this.map = m;
+    public Dessin(Jeu j) {
+        this.jeu = j;
     }
 
     public void dessiner(BufferedImage image) {
@@ -22,8 +21,8 @@ public class Dessin implements DessinAbstract {
         Graphics2D graphics = image.createGraphics();
 
         int i = 0;
-        while (i < this.map.getMap().size()) {
-            Row r = this.map.getMap().get(i);
+        while (i < this.jeu.getMap().size()) {
+            Row r = this.jeu.getMap().get(i);
             for (int j = 0; j < r.getSize(); j++) {
                 if (r.getTile(j) == 1)
                     Sprites.dessinerCentre(graphics, "tank_12_0", j * 30, i * 30);
@@ -31,7 +30,8 @@ public class Dessin implements DessinAbstract {
             i++;
         }
 
-        Sprites.dessinerCentre(graphics, "character_1_0", 20, 20);
+        Sprites.dessinerCentre(graphics, "character_1_0", this.jeu.getJoueur().getPositionX() * 30,
+                this.jeu.getJoueur().getPositionY() * 30);
 
         graphics.dispose();
     }

@@ -1,7 +1,10 @@
 package code;
+
 //import java.util.Scanner;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.Function;
 
 public class Jeu extends CClavier{
     
@@ -16,7 +19,7 @@ public class Jeu extends CClavier{
     public Jeu(){
        // Scanner sc = new Scanner(System.in);
         this.j = new Joueur("Bruno", 0, 0);
-        File file = new File("map/tests/level_3.txt");
+        File file = new File("src/map/level_1.txt");
         this.carte = new Map(file);
         //sc.close();
     }
@@ -36,20 +39,20 @@ public class Jeu extends CClavier{
      * 
      * Methode de commande lorsque l'on appuie sur les touches du clavier
      */
-    public void commande(){
-            if(isPressed(122)){
+    public void commande(code.moteurJeu.moteur.CClavier clavier){
+            if(clavier.isPressed(83)){
                 gererCollision(j.getPositionX(), j.getPositionY()+1);
                 j.move(0, 1);
             }
-            if(isPressed(113)){
+            if(clavier.isPressed(81)){
                 gererCollision(j.getPositionX()-1, j.getPositionY());
                 j.move(-1,0);
             }
-            if(isPressed(115)){
+            if(clavier.isPressed(90)){
                 gererCollision(j.getPositionX(), j.getPositionY()-1);
                 j.move(0, -1);
             }
-            if(isPressed(100)){
+            if(clavier.isPressed(68)){
                 gererCollision(j.getPositionX()+1, j.getPositionY());
                 j.move(1, 0);
             }
@@ -86,7 +89,7 @@ public class Jeu extends CClavier{
      * Methode de getter de la map
      * @return la Map du jeu  
      */
-    public Map getMap(){
-        return this.carte;
+    public ArrayList<Row> getMap(){
+        return this.carte.getMap();
     }
 }

@@ -13,10 +13,10 @@ public class App {
 
         Sprites.chargerFeuille("tank", "./documents/images/tank_tiles.png", 22, 12);
 
-        Map map = new Map("./src/map/level_1.txt");
+        Jeu jeu = new Jeu();
 
-        Dessin d = new Dessin(map);
-        JeuGraphique j = new JeuGraphique();
+        Dessin d = new Dessin(jeu);
+        JeuGraphique j = new JeuGraphique(jeu);
     
         MoteurGraphique m = new MoteurGraphique(j, d);
     
