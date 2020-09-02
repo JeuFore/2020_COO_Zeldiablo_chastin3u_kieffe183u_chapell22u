@@ -1,9 +1,14 @@
 package code;
 
-import java.awt.image.BufferedImage;
 import code.moteurJeu.moteur.*;
 
 public class JeuGraphique implements JeuAbstract{
+
+    private Jeu jeu;
+
+    public JeuGraphique(Jeu j){
+        this.jeu = j;
+    }
 
 	/**
 	 * @return true si et seulement si le jeu est fini
@@ -13,7 +18,7 @@ public class JeuGraphique implements JeuAbstract{
     }
 
     public String evoluer(code.moteurJeu.moteur.CClavier clavier, CSouris souris) {
-        System.out.println(souris.isPressed());
+        this.jeu.commande(clavier);
         return "";
     }
 }
