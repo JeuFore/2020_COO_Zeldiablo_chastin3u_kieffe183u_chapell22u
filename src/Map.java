@@ -5,10 +5,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Classe représentant une carte d'un niveau
+ */
 public class Map {
 
+    /**
+     * variable qui contient la carte d'un niveau
+     */
     private ArrayList<Row> map;
 
+    /**
+     * Construit un niveau a partir d'une chaine de caracteres indiquant le fichier du niveau
+     * @param link chaine de caracteres indiquant le fichier du niveau
+     */
     public Map(String link) {
         try {
             File file = new File(link);
@@ -18,14 +28,28 @@ public class Map {
         }
     }
 
+    /**
+     * Construit un niveau a partir d'une file contenant le niveau
+     * @param file file contenant le niveau
+     */
     public Map(File file) {
         this.map = load(file);
     }
 
+    /**
+     * Getter de map
+     * @return la map
+     */
     public ArrayList<Row> getMap() {
         return this.map;
     }
 
+    /**
+     * Méthode renvoyant true si les coordonnées passées en paramètres sont bien à l'intérieur de la carte
+     * @param x coordonnée x
+     * @param y coordonnée y
+     * @return true si les coordonnées sont dans la map
+     */
     public boolean isInBounds(int x, int y) {
         try {
             Row row = this.map.get(y);
@@ -38,6 +62,12 @@ public class Map {
         }
     }
 
+    /**
+     * Retourne la valeur de la case demandée
+     * @param x coordonnée x
+     * @param y coordonnée y
+     * @return valeur de la case
+     */
     public int getTile(int x, int y) {
         if (isInBounds(x, y)) {
             Row row = this.map.get(y);
@@ -48,6 +78,11 @@ public class Map {
         }
     }
 
+    /**
+     * Méthode qui charge un niveau à partir d'un fichier
+     * @param file fichier contenant le niveau
+     * @return la map
+     */
     public static ArrayList<Row> load(File file) {
         ArrayList<Row> map = null;
         try {
@@ -70,6 +105,11 @@ public class Map {
         return map;
     }
     
+    /**
+     * Méthode qui convertit un tableau de chaîne de caractères dans le format d'un niveau
+     * @param lines chaînes de caractères
+     * @return niveau
+     */
     private static ArrayList<Row> convertLinesToMap(String[] lines) throws NumberFormatException {
         ArrayList<Row> rows = new ArrayList<Row>();
         for(String line : lines) {
