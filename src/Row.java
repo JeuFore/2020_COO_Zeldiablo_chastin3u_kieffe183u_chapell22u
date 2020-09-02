@@ -53,5 +53,13 @@ public class Row {
     public void removeTile() {
         this.tiles.remove(this.tiles.size() - 1);
     }
+
+    /**
+     * Méthode qui retourne la taille de Row
+     * @return taille de Row
+     */
+    public int getSize(){
+        return this.tiles.size();
+    }
     
 }
