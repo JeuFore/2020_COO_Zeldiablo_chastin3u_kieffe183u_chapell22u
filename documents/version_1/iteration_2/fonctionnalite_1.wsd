@@ -2,53 +2,141 @@
 
 title Joueur Map et Jeu
 
-Jeu "1" --> "1" Map : - carte
-Jeu "1" --> "1" Joueur : - j
+Jeu "0" --> "1" Map : - carte
+Jeu "0" --> "1" Character : - j
 
-class Joueur {
-    - nom : String
-    - vie : int
-    - mana : int
-    - xp : int
-    - collision : boolean
-    - positionX : int 
-    - positionY : int
-    + Joueur(String,int,int)
-    + move(int,int) : void
-    + changerVie(int) : void
-    + changerMana(int) : void
-    + changerXp(int) : void
-    + getVie() : int
-    + getMana() : int
-    + getXp() : int
-    + getPositionX() : int
-    + getPositionY() : int 
-    + getCollision() : boolean
-    + setPositionX(int) : void
-    + setPositionY(int) : void
-    + getNom() : String
-    + bloquer(boolean) : void
-    + toString() : String
+App "0" --> "1" Jeu
+App "0" --> "1" Dessin
+App "0" --> "1" JeuControleur
+
+Map "0" --> "1" Row : - ArrayList<Row>
+
+class App {
+    + main(String[]): void
+}
+
+class Dessin {
+    - jeu: Jeu
+    + Dessin(Jeu)
+    + dessiner(BufferedImage): void
+}
+
+class JeuControleur {
+    - jeu: Jeu
+    + JeuControleur(Jeu)
+    + etreFini(): boolean
+    + evoluer(CClavier, CSouris): String
 }
 
 class Map {
+    - map: ArrayList<Row>
     + Map(String)
+    + Map(File)
     + getMap() : ArrayList<Row>
     + isInBounds(int, int) : boolean
     + getTile(int, int): int
-    + {static} load(String): ArrayList<Row>
+    + {static} load(File): ArrayList<Row>
     - {static} convertLinesToMap(String[]): ArrayList<Row>
+}
+
+class Row {
+    - tiles: ArrayList<Integer>
+    + Row(ArrayList<Integer>)
+    + Row()
+    + getTile(int): int
+    + addTile(int): void
+    + removeTile(): void
+    + getSize(): int
 }
 
 class Jeu {
     +Jeu()
-    +Jeu(FIle,Joueur)
-    +commande() : void
+    +Jeu(File, Joueur)
+    +commande(CClavier) : void
     +gererCollision(int,int) : void
-    +getJoueur() : Joueur
+    +getCharacter() : Character
     -getFile(String) : file
     +getMap() : ArrayList<Row>
     +gererDeclencheur(int, int, Character)
+}
+
+Character "1" --> "1" Position : - position
+
+Character "1" --> "1" FacingProperty : - facingProperty
+
+abstract class Character {
+    + Character(String, int, int, int)
+    - nom: String
+    - vie: int
+    - collision: boolean
+    - facing: int
+    + getVie(): int
+    + getCollision(): boolean
+    + getNom(): String
+    + getPosition(): Position
+    + setPosition(Position): void
+    + setVie(int): void 
+    + move(int, int): void
+    + changerVie(int n): void
+    + bloquer(boolean): void
+    + setFacing(int): int
+    + toString(): String
+}
+
+interface Playable {
+    + setXP(int): void
+    + changerXP(int): void
+    + getXP(): int
+}
+
+interface MagicPower {
+    + changerMana(int) : void
+    + setMana(int): void
+    + getMana(): int
+}
+
+abstract class NonPlayableCharacter extends Character {
+    + NonPlayableCharacter(String, int, int, int, FacingProperty)
+}
+abstract class PlayableCharacter extends Character implements Playable {
+    - xp: int;
+    + NonPlayableCharacter(String, int, int, int, FacingProperty)
+}
+
+class Advanturer extends PlayableCharacter {
+    + Advanturer(String, int, int, int)
+}
+class Wizard extends PlayableCharacter implements MagicPower {
+    - mana: int
+    + Wizard(String, int, int, int, int)
+    + toString(): String
+}
+
+class Monster extends NonPlayableCharacter {
+    + Monster(String, int, int, int)
+}
+
+class Position {
+    + Position()
+    + Position(int, int)
+    - x: int
+    - y: int
+    + getX(): int
+    + getY(): int
+    + changerX(int): void
+    + changerY(int): void
+}
+
+class FacingProperty {
+    - view: int
+    - spriteName: String
+    - idXaxis: int
+    - idYaxis: int
+    + FacingProperty(String, x, y)
+    + getId(): int
+    + getView(): int
+    + getSpriteName(): String
+    + setView(int): void
 }
 
 @enduml
