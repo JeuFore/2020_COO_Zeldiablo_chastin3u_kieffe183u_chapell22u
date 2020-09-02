@@ -37,17 +37,14 @@ interface MagicPower {
 
 abstract class NonPlayableCharacter extends Character {
     + NonPlayableCharacter(String, int, int, int)
-    + toString(): String
 }
 abstract class PlayableCharacter extends Character implements Playable {
     - xp: int;
     + NonPlayableCharacter(String, int, int, int)
-    + toString(): String
 }
 
 class Advanturer extends PlayableCharacter {
     + Advanturer(String, int, int, int)
-    + toString(): String
 }
 class Wizard extends PlayableCharacter implements MagicPower {
     - mana: int
@@ -57,7 +54,6 @@ class Wizard extends PlayableCharacter implements MagicPower {
 
 class Monster extends NonPlayableCharacter {
     + Monster(String, int, int, int)
-    + toString(): String
 }
 
 class Position {
