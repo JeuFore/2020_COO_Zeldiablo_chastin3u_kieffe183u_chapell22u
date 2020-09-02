@@ -1,4 +1,6 @@
+
 //import java.util.Scanner;
+import java.io.File;
 import java.util.Arrays;
 
 public class Jeu extends CClavier{
@@ -14,7 +16,7 @@ public class Jeu extends CClavier{
     public Jeu(){
        // Scanner sc = new Scanner(System.in);
         this.j = new Joueur("Bruno", 0, 0);
-        File file = getFile("map/tests/level_3.txt")
+        File file = getFile("map/tests/level_3.txt");
         this.carte = new Map(file);
         //sc.close();
     }

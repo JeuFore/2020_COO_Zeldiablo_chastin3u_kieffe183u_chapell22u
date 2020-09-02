@@ -24,7 +24,7 @@ public class TestDeplacement {
     @Test
     public void testDeplacementCollision(){
         Joueur j = new Joueur("Bob", 1, 1);
-        j.bloquer();
+        j.bloquer(true);
         j.move(0, 1);
         assertEquals("Le joueur devrait ne pas avoir bouge", 1, j.getPositionX());
         assertEquals("Le joueur devrait ne pas avoir bouge", 1, j.getPositionY());
