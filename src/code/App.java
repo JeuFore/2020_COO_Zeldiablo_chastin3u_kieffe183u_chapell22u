@@ -14,10 +14,10 @@ public class App {
         Jeu jeu = new Jeu();
 
         Dessin d = new Dessin(jeu);
-        JeuGraphique j = new JeuGraphique(jeu);
+        JeuControleur j = new JeuControleur(jeu);
     
         MoteurGraphique m = new MoteurGraphique(j, d);
     
-        m.lancerJeu(900, 900, 100);
+        m.lancerJeu(900, 900, 10);
     }
 }

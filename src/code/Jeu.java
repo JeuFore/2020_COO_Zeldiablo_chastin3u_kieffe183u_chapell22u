@@ -20,7 +20,7 @@ public class Jeu {
     public Jeu() {
         // Scanner sc = new Scanner(System.in);
         this.j = new Advanturer("Bob", 10, 1, 1);
-        File file = new File("src/map/level_2.txt");
+        File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
         // sc.close();
     }

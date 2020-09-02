@@ -2,11 +2,11 @@ package code;
 
 import code.moteurJeu.moteur.*;
 
-public class JeuGraphique implements JeuAbstract{
+public class JeuControleur implements JeuAbstract{
 
     private Jeu jeu;
 
-    public JeuGraphique(Jeu j){
+    public JeuControleur(Jeu j){
         this.jeu = j;
     }
 
