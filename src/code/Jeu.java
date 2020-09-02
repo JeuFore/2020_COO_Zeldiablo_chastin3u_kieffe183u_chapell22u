@@ -4,7 +4,7 @@ package code;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import charcaters.*;
+import characters.*;
 import java.util.function.Function;
 
 public class Jeu extends CClavier{
