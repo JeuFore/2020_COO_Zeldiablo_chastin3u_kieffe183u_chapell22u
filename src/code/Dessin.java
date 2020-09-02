@@ -25,13 +25,15 @@ public class Dessin implements DessinAbstract {
             Row r = this.jeu.getMap().get(i);
             for (int j = 0; j < r.getSize(); j++) {
                 if (r.getTile(j) == 1)
-                    Sprites.dessinerCentre(graphics, "tank_12_0", j * 30 +15, i * 30+15);
+                    Sprites.dessinerCentre(graphics, "tank_12_0", j * 30 + 15, i * 30 + 15);
             }
             i++;
         }
 
-        Sprites.dessinerCentre(graphics, "character_4_" + this.jeu.getJoueur().getFacing(),
-                this.jeu.getJoueur().getPositionX() * 30+15, this.jeu.getJoueur().getPositionY() * 30+15);
+        Sprites.dessinerCentre(graphics,
+                "character_" + this.jeu.getJoueur().getfacingId() + "_" + this.jeu.getJoueur().getFacing(),
+                this.jeu.getJoueur().getPosition().getX() * 30 + 15,
+                this.jeu.getJoueur().getPosition().getY() * 30 + 15);
 
         graphics.dispose();
     }

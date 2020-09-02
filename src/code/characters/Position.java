@@ -5,13 +5,13 @@ public class Position {
     private int x, y;
 
     public Position(int x, int y) {
-        this.setX(x);
-        this.setY(y);
+        this.x = x;
+        this.y = y;
     }
 
     public Position() {
-        this.setX(0);
-        this.setY(0);
+        this.x = 0;
+        this.y = 0;
     }
 
     public int getY() {
@@ -38,6 +38,4 @@ public class Position {
         this.y += y;
     }
 
-    
-    
 }

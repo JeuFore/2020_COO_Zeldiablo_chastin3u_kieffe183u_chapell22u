@@ -5,7 +5,7 @@ public class Wizard extends PlayableCharacter implements MagicPower {
     private int mana;
 
     public Wizard(String name, int life, int x, int y, int mana) {
-        super(name, life, x, y);
+        super(name, life, x, y, new int[] { 4, 10 });
         this.mana = mana;
     }
 
@@ -32,5 +32,5 @@ public class Wizard extends PlayableCharacter implements MagicPower {
         res.append(" Je possède des pouvoirs magiques (" + this.mana + ")");
         return res.toString();
     }
-    
+
 }

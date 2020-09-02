@@ -9,17 +9,22 @@ public abstract class Character {
 
     private Position position;
 
-    public Character(String name, int life, int x, int y) {
+    private int facing;
+    private int[] facingPropertie;
+
+    public Character(String name, int life, int x, int y, int[] facingPropertie) {
         this.nom = name;
         this.vie = life;
         this.collision = false;
         this.position = new Position(x, y);
+        this.facingPropertie = facingPropertie;
+        this.facing = 3 + facingPropertie[0];
     }
 
     public void move(int x, int y) {
         if (!collision) {
             this.position.changerX(x);
-            this.position.changerX(y);
+            this.position.changerY(y);
         }
     }
 
@@ -59,6 +64,18 @@ public abstract class Character {
         this.vie = (this.vie + n <= 0) ? 0 : n;
     }
 
+    public int getFacing() {
+        return this.facing;
+    }
+
+    public void setFacing(int f) {
+        this.facing = f + this.facingPropertie[0];
+    }
+
+    public int getfacingId() {
+        return this.facingPropertie[1];
+    }
+
     @Override
     public String toString() {
         StringBuffer res = new StringBuffer("Je suis " + this.nom + ", un personnage ");
@@ -68,7 +85,7 @@ public abstract class Character {
             res.append("jouable ");
         }
         res.append("(" + this.vie + ") ");
-        res.append("de classe \"" + this.getClass().getName() + "\"");
+        res.append("de classe \"" + this.getClass().getSimpleName() + "\"");
         return res.toString();
     }
 
