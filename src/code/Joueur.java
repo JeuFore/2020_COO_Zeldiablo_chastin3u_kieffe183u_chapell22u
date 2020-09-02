@@ -10,6 +10,8 @@ public class Joueur extends CClavier {
     private int xp;
     private boolean collision;
 
+    private int facing;
+
     private int positionX;
     private int positionY;
 
@@ -28,6 +30,7 @@ public class Joueur extends CClavier {
         this.xp = 0;
         this.positionX = x;
         this.positionY = y;
+        this.facing = 3;
     }
 
     /**
@@ -149,6 +152,14 @@ public class Joueur extends CClavier {
      */
     public String getNom() {
         return this.nom;
+    }
+
+    public int getFacing(){
+        return this.facing;
+    }
+
+    public void setFacing(int f){
+        this.facing = f;
     }
 
     public void bloquer(boolean bool) {
