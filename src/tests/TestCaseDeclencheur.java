@@ -9,7 +9,18 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 
-public class TestCaseDenclencheur {
+public class TestCaseDeclencheur {
+
+    /**
+     * Methode qui retourne le fichier correspondant au path donnees (probleme de path avec les tests)
+     * @param path
+     * @return le Fichier correspondant
+     */
+    private File getFile(String path) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(path).getFile());
+        return file;
+    }
 
     @Test
     public void testCaseDenclencheurNegative(){

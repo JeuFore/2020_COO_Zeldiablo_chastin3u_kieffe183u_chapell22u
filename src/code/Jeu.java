@@ -4,8 +4,8 @@ package code;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import characters.*;
-import java.util.function.Function;
+import code.characters.*;
+import code.characters.Character;
 
 public class Jeu extends CClavier{
     
@@ -102,21 +102,21 @@ public class Jeu extends CClavier{
      * Methode pour gerer le passage sur une case declencheur  
      * @param x,y
      */
-       public static void gererDeclencheur(int x, int y, Character c){
+       public void gererDeclencheur(int x, int y, Character c){
 
-        if (carte.getTile(c.getPosition().getX(),c.getPosition.getY()) == 2){
+        if (carte.getTile(c.getPosition().getX(),c.getPosition().getY()) == 2){
             c.changerVie(-2);
-            System.outprint.println("Aie le piege... -2 points de vie.");
-            else if (c instanceof UnplayableCharacter){
-                System.outprint.println("Quelqu un d autre a perdu de la vie... Prenez l avantage!");
-            }
+            System.out.println("Aie le piege... -2 points de vie.");
         }
-        if ((carte.getTile(c.getPosition().getX(),c.getPosition.getY()) == 3){
+        else if (c instanceof NonPlayableCharacter){
+            System.out.println("Quelqu un d autre a perdu de la vie... Prenez l avantage!");
+        }
+        if ((carte.getTile(c.getPosition().getX(),c.getPosition().getY()) == 3)){
             c.changerVie(2);
             if(c instanceof PlayableCharacter)
-            System.outprint.println("Tu as trouve une fontaine de soin, +2 points de vie!");
-            else if (c instanceof UnplayableCharacter){
-                System.outprint.println("Attention quelqu un d autre a recupere de la vie ... ");
+            System.out.println("Tu as trouve une fontaine de soin, +2 points de vie!");
+            else if (c instanceof NonPlayableCharacter){
+                System.out.println("Attention quelqu un d autre a recupere de la vie ... ");
             }
         }
     }
