@@ -2,7 +2,9 @@
 
 title Diagramme de classe du package characters
 
-Character "1" --> "1" Position : - carte
+Character "1" --> "1" Position : - position
+
+Character "1" --> "1" FacingProperty : - facingProperty
 
 abstract class Character {
     + Character(String, int, int, int)
@@ -36,18 +38,15 @@ interface MagicPower {
 }
 
 abstract class NonPlayableCharacter extends Character {
-    + NonPlayableCharacter(String, int, int, int)
-    + toString(): String
+    + NonPlayableCharacter(String, int, int, int, FacingProperty)
 }
 abstract class PlayableCharacter extends Character implements Playable {
     - xp: int;
-    + NonPlayableCharacter(String, int, int, int)
-    + toString(): String
+    + NonPlayableCharacter(String, int, int, int, FacingProperty)
 }
 
 class Advanturer extends PlayableCharacter {
     + Advanturer(String, int, int, int)
-    + toString(): String
 }
 class Wizard extends PlayableCharacter implements MagicPower {
     - mana: int
@@ -57,7 +56,6 @@ class Wizard extends PlayableCharacter implements MagicPower {
 
 class Monster extends NonPlayableCharacter {
     + Monster(String, int, int, int)
-    + toString(): String
 }
 
 class Position {
@@ -69,6 +67,18 @@ class Position {
     + getY(): int
     + changerX(int): void
     + changerY(int): void
+}
+
+class FacingProperty {
+    - view: int
+    - spriteName: String
+    - idXaxis: int
+    - idYaxis: int
+    + FacingProperty(String, x, y)
+    + getId(): int
+    + getView(): int
+    + getSpriteName(): String
+    + setView(int): void
 }
 
 @enduml
