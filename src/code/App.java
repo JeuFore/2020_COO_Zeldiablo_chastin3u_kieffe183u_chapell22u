@@ -18,6 +18,7 @@ public class App {
     
         MoteurGraphique m = new MoteurGraphique(j, d);
     
+        Audio.play("src/audio/theme.wav");
         m.lancerJeu(900, 900, 10);
     }
 }
