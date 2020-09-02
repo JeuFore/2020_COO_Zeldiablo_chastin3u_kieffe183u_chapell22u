@@ -30,7 +30,7 @@ public class Dessin implements DessinAbstract {
             i++;
         }
 
-        code.characters.Character joueur = this.jeu.getJoueur();
+        code.characters.Character joueur = this.jeu.getCharacter();
 
         Sprites.dessinerCentre(graphics,
                 joueur.getFacingProperty().getSpriteName() + "_" + joueur.getFacingProperty().getId() + "_"

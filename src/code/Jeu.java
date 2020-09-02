@@ -97,7 +97,7 @@ public class Jeu {
      * 
      * @return le character de Jeu
      */
-    public Character getJoueur() {
+    public Character getCharacter() {
         return this.j;
     }
 
