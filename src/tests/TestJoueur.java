@@ -1,4 +1,8 @@
+package tests;
+
 import org.junit.Test;
+
+import code.Joueur;
 
 import static org.junit.Assert.*;
 

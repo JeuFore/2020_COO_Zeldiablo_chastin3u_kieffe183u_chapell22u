@@ -1,3 +1,5 @@
+package code;
+
 public class Joueur extends CClavier {
 
     private final int POINT_DE_VIE = 10;
