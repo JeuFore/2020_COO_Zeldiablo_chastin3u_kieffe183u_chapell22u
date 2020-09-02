@@ -11,14 +11,13 @@ public class Wizard extends PlayableCharacter implements MagicPower {
 
     @Override
     public void changerMana(int mana) {
-        this.mana += mana;
-
+        if (this.mana + mana <= 0) this.mana = 0;
+        else this.mana += mana;
     }
 
     @Override
     public void setMana(int mana) {
         this.mana = mana;
-
     }
 
     @Override
