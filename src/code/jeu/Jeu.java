@@ -7,6 +7,8 @@ import java.util.Arrays;
 import code.characters.*;
 import code.characters.Character;
 
+import code.block.*;
+
 public class Jeu {
 
     private Character j;
