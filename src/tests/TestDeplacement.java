@@ -53,7 +53,7 @@ public class TestDeplacement {
     @Test
     public void testDeplacementCollisionOutOFBounds(){
     	File file = getFile("tests/map/level_3.txt");
-        Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,1,1));
+        Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,0,0));
         jeu.gererCollision(jeu.getJoueur().getPosition().getX()+1, jeu.getJoueur().getPosition().getY());
         jeu.getJoueur().move(-1, 0);
         assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getJoueur().getPosition().getX());
@@ -64,7 +64,7 @@ public class TestDeplacement {
     public void testDeplacementCollisionSurUnMur(){
     	File file = getFile("tests/map/level_3.txt");
     	System.out.println(file);
-    	Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,1,1));
+    	Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,0,0));
         jeu.gererCollision(jeu.getJoueur().getPosition().getX()+1, jeu.getJoueur().getPosition().getY());
         jeu.getJoueur().move(1, 0);
         assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getJoueur().getPosition().getX());
@@ -73,8 +73,8 @@ public class TestDeplacement {
 
     @Test
     public void testDeplacementDansLeVide(){
-    	File file = getFile("level_3.txt");
-    	Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,1,1));
+    	File file = getFile("tests/map/level_3.txt");
+    	Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,0,0));
         jeu.gererCollision(jeu.getJoueur().getPosition().getX()+1, jeu.getJoueur().getPosition().getY());
         jeu.getJoueur().move(0, -1);
         assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getJoueur().getPosition().getY());
