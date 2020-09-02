@@ -20,7 +20,7 @@ public class Jeu extends CClavier {
       
     public Jeu() {
         // Scanner sc = new Scanner(System.in);
-        this.j = new Wizard("Bob", 10, 1, 1, 10);
+        this.j = new Advanturer("Bob", 10, 1, 1);
         File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
         // sc.close();
@@ -48,25 +48,25 @@ public class Jeu extends CClavier {
                 gererCollision(j.getPosition().getX(), j.getPosition().getY()+1);
                 j.move(0, 1);
                 gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
-                j.setFacing(0);
+                j.setFacingView(0);
             }
             if(clavier.isPressed(81)){
                 gererCollision(j.getPosition().getX()-1, j.getPosition().getY());
                 j.move(-1,0);
                 gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
-                j.setFacing(1);
+                j.setFacingView(1);
             }
             if(clavier.isPressed(90)){
                 gererCollision(j.getPosition().getX(), j.getPosition().getY()-1);
                 j.move(0, -1);
                 gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
-                j.setFacing(3);
+                j.setFacingView(3);
             }
             if(clavier.isPressed(68)){
                 gererCollision(j.getPosition().getX()+1, j.getPosition().getY());
                 j.move(1, 0);
                 gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
-                j.setFacing(2);
+                j.setFacingView(2);
             }
     	} else if (j instanceof NonPlayableCharacter) {
     		

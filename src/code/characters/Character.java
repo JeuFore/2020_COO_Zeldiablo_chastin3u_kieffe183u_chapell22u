@@ -28,12 +28,7 @@ public abstract class Character {
     /**
      * Orientation du personnage à l'instant T
      */
-    private int facing;
-
-    /**
-     * Propriétés permettant de retrouver le sprite pour l'affichage
-     */
-    private int[] facingPropertie;
+    private FacingProperty facingProperty;
 
     /**
      * Construit un Personnage
@@ -41,15 +36,14 @@ public abstract class Character {
      * @param life points de vie
      * @param x position x
      * @param y position y
-     * @param facingPropertie propriétés de l'affichage
+     * @param facingProperty propriétés de l'affichage
      */
-    public Character(String name, int life, int x, int y, int[] facingPropertie) {
+    public Character(String name, int life, int x, int y, FacingProperty facingProperty) {
         this.nom = name;
         this.vie = life;
         this.collision = false;
         this.position = new Position(x, y);
-        this.facingPropertie = facingPropertie;
-        this.facing = 3 + facingPropertie[0];
+        this.facingProperty = facingProperty;
     }
 
     /**
@@ -133,35 +127,23 @@ public abstract class Character {
      * @param n nombre de points de vie
      */
     public void changerVie(int n) {
-        if (this.vie + n <= 0) {
-            this.vie = 0;
-        } else {
-            this.vie += n;
-        }
+        this.vie = (this.vie + n <= 0) ? 0 : n;
     }
 
     /**
-     * Getter de facing
-     * @return facing
+     * Getter de facingProperty
+     * @return facingProperty
      */
-    public int getFacing() {
-        return this.facing;
+    public FacingProperty getFacingProperty() {
+        return this.facingProperty;
     }
 
     /**
-     * Setter de facing
-     * @param f facing
+     * Méthode qui permet de changer la rotation du joueur
+     * @param v position
      */
-    public void setFacing(int f) {
-        this.facing = f + this.facingPropertie[0];
-    }
-
-    /**
-     * Retourne l'ID du facing
-     * @return ID du facing
-     */
-    public int getfacingId() {
-        return this.facingPropertie[1];
+    public void setFacingView(int v) {
+        this.facingProperty.setView(v);
     }
 
     /**

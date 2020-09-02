@@ -7,9 +7,7 @@ public class App {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Sprites.chargerImage("test", "./documents/images/megaman-solo.png");
-
-        Sprites.chargerFeuille("character", "./documents/images/vf_actor1-5110ef5.png", 12, 8);
+        Sprites.chargerFeuille("PlayableCharacter", "./documents/images/vf_actor1-5110ef5.png", 12, 8);
 
         Sprites.chargerFeuille("tank", "./documents/images/tank_tiles.png", 22, 12);
 
