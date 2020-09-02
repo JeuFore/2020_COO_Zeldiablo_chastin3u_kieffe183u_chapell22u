@@ -18,11 +18,19 @@ public class Map {
     private ArrayList<Row> map;
 
     /**
-     * Construit un niveau a partir d'une chaine de caracteres indiquant le fichier du niveau
+     * Variable qui contient les personnages sur cette map
+     */
+    private ArrayList<Character> characters;
+
+    /**
+     * Construit un niveau a partir d'une chaine de caracteres indiquant le fichier
+     * du niveau
+     * 
      * @param link chaine de caracteres indiquant le fichier du niveau
      */
     public Map(String link) {
         try {
+            this.setCharacters(new ArrayList<Character>());
             File file = new File(link);
             this.map = load(file);
         } catch (NullPointerException exception) {
@@ -31,10 +39,28 @@ public class Map {
     }
 
     /**
+     * Getter de characters
+     * @return les personnages de cette carte
+     */
+    public ArrayList<Character> getCharacters() {
+        return this.characters;
+    }
+
+    /**
+     * Setter de characters
+     * @param characters personnages
+     */
+    public void setCharacters(ArrayList<Character> characters) {
+        this.characters = characters;
+    }
+
+    /**
      * Construit un niveau a partir d'une file contenant le niveau
+     * 
      * @param file file contenant le niveau
      */
     public Map(File file) {
+        this.setCharacters(new ArrayList<Character>());
         this.map = load(file);
     }
 
