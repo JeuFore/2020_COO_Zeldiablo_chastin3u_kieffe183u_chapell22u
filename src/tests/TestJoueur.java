@@ -98,4 +98,19 @@ public class TestJoueur {
         // test des données
         assertEquals("Le joueur doit avoir 0 point d'xp", 0, j.getXP());
     }
+
+    @Test
+    public void test_move() {
+        // preparation des données
+        Advanturer j = new Advanturer("Steve", 10, 0, 0);
+
+        j.move(-1, 0);
+        assertEquals("Le joueur avoir bougé", -1, j.getPosition().getX());
+        j.move(2, 0);
+        assertEquals("Le joueur avoir bougé", 1, j.getPosition().getX());
+        j.move(0, -1);
+        assertEquals("Le joueur avoir bougé", -1, j.getPosition().getY());
+        j.move(0, 2);
+        assertEquals("Le joueur avoir bougé", 1, j.getPosition().getY());
+    }
 }
