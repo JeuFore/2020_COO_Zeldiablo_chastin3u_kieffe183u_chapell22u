@@ -27,6 +27,7 @@ public class TestCaseDeclencheur {
     	File file = getFile("tests/map/level_4.txt");
     	Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,0,0));
         jeu.getJoueur().move(1, 0);
+        jeu.gererDeclencheur(jeu.getJoueur().getPosition().getX(), jeu.getJoueur().getPosition().getY(), jeu.getJoueur());
         assertEquals("Le joueur devrait avoir bouge", 1, jeu.getJoueur().getPosition().getX());
         assertEquals("Le joueur doit avoir perdu des points de vie", 8, jeu.getJoueur().getVie());
     }
@@ -36,6 +37,7 @@ public class TestCaseDeclencheur {
     	File file = getFile("tests/map/level_4.txt");
     	Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,0,0));
         jeu.getJoueur().move(0, -1);
+        jeu.gererDeclencheur(jeu.getJoueur().getPosition().getX(), jeu.getJoueur().getPosition().getY(), jeu.getJoueur());
         assertEquals("Le joueur devrait avoir bouge", -1, jeu.getJoueur().getPosition().getY());
         assertEquals("Le joueur doit avoir gagne des points de vie", 12, jeu.getJoueur().getVie());
     }
