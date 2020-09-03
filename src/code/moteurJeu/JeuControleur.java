@@ -3,6 +3,7 @@ package code.moteurJeu;
 import code.moteurJeu.moteur.*;
 
 import code.jeu.Jeu;
+import code.jeu.MovingKeyboard;
 
 public class JeuControleur implements JeuAbstract {
 
@@ -20,7 +21,7 @@ public class JeuControleur implements JeuAbstract {
     }
 
     public String evoluer(CClavier clavier, CSouris souris) {
-        this.jeu.commande(clavier);
+        this.jeu.commande(null, new MovingKeyboard(clavier));
         return "";
     }
 }

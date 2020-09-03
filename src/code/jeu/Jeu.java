@@ -2,16 +2,22 @@ package code.jeu;
 
 //import java.util.Scanner;
 import java.io.File;
+import java.util.ArrayList;
+
 import code.characters.*;
 import code.characters.Character;
+import code.moteurJeu.FrameListener;
+import code.moteurJeu.moteur.CClavier;
+import code.moteurJeu.moteur.MoteurGraphique;
 import code.block.*;
 
-public class Jeu {
+public class Jeu implements FrameListener {
 
     private Character j;
     private Map carte;
 
     private AnimateBlock actualBlock;
+    private CClavier clavier;
 
     /**
      * 
@@ -25,6 +31,7 @@ public class Jeu {
         this.carte = new Map(file);
         this.carte.verify();
         this.actualBlock = null;
+        this.clavier = new CClavier();
         // sc.close();
     }
 
@@ -39,41 +46,39 @@ public class Jeu {
         this.carte.verify();
     }
 
+    public void setClavier(CClavier clavier) {
+        this.clavier = clavier;
+    }
+
     /**
      * 
      * Methode de commande lorsque l'on appuie sur les touches du clavier
-     */
-
-    public void commande(code.moteurJeu.moteur.CClavier clavier) {
-        if (j instanceof PlayableCharacter) {
-            if (clavier.isPressed(83)) {
-                gererCollision(j.getPosition().getX(), j.getPosition().getY() + 1);
-                j.move(0, 1);
-                j.setFacingView(FacingProperty.FACING_DOWN);
-            }
-            if (clavier.isPressed(81)) {
-                gererCollision(j.getPosition().getX() - 1, j.getPosition().getY());
-                j.move(-1, 0);
-                j.setFacingView(FacingProperty.FACING_LEFT);
-            }
-            if (clavier.isPressed(90)) {
-                gererCollision(j.getPosition().getX(), j.getPosition().getY() - 1);
-                j.move(0, -1);
-                j.setFacingView(FacingProperty.FACING_UP);
-            }
-            if (clavier.isPressed(68)) {
-                gererCollision(j.getPosition().getX() + 1, j.getPosition().getY());
-                j.move(1, 0);
-                j.setFacingView(FacingProperty.FACING_RIGHT);
-            }
-            if (clavier.isPressed(32)) {
-                carte.gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
-                System.out.println(this.carte.getCharacters().get(0).getVie());
-            }
-        } else if (j instanceof NonPlayableCharacter) {
-        	
+     */       	
+        
+    public void commande(Character c, MovingProperty movingProperty) {
+        if (movingProperty.canMove(FacingProperty.FACING_DOWN)) {
+            this.move(0, 1, FacingProperty.FACING_DOWN, (c == null) ? j : c);
+        }
+        if (movingProperty.canMove(FacingProperty.FACING_LEFT)) {
+            this.move(-1, 0, FacingProperty.FACING_LEFT, (c == null) ? j : c);
+        }
+        if (movingProperty.canMove(FacingProperty.FACING_UP)) {
+            this.move(0, -1, FacingProperty.FACING_UP, (c == null) ? j : c);
+        }
+        if (movingProperty.canMove(FacingProperty.FACING_RIGHT)) {
+            this.move(1, 0, FacingProperty.FACING_RIGHT, (c == null) ? j : c);
+        }
+        if (clavier.isPressed(32)) {
+            carte.gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
+            System.out.println(this.carte.getCharacters().get(0).getVie());
         }
         gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
+    }
+
+    private void move(int x, int y, int facingProperty, Character c) {
+        gererCollision(c.getPosition().getX() + x, c.getPosition().getY() + y, (c == null) ? j : c);
+        c.move(x, y);
+        c.setFacingView(facingProperty);
     }
 
     /**
@@ -82,16 +87,11 @@ public class Jeu {
      * @param x,y les attributs de la case a tester
      * 
      */
-    public void gererCollision(int x, int y) {
-        if (!carte.isInBounds(x, y)) {
-            j.bloquer(true);
+    public void gererCollision(int x, int y, Character c) {
+        if (c == null) {
+            j.bloquer((! carte.isInBounds(x, y)) || (!carte.getTile(x, y).isTraversable()));
         } else {
-            j.bloquer(false);
-        }
-        if (!carte.getTile(x, y).isTraversable()) {
-            j.bloquer(true);
-        } else {
-            j.bloquer(false);
+            c.bloquer((! carte.isInBounds(x, y)) || (!carte.getTile(x, y).isTraversable()));
         }
     }
 
@@ -129,7 +129,7 @@ public class Jeu {
                 this.actualBlock = animateBlock;
                 character.changerVie(animateBlock.getLife());
                 if (animateBlock instanceof Trap)
-                    character.setStone(((Trap) animateBlock).getStone());
+                    character.setStun(((Trap) animateBlock).getStun());
             }
         }
 
@@ -137,11 +137,28 @@ public class Jeu {
             if (this.actualBlock.getVisible())
                 this.actualBlock.changeNbAnimation();
             else if (!this.actualBlock.getActif())
-                character.setStone(false);
+                character.setStun(false);
     }
 
     public AnimateBlock getActualBlock() {
         return this.actualBlock;
+    }
+
+    @Override
+    /**
+     * Méthode qui se déclenche à chaque frame
+     */
+    public void frameUpdate() {
+        ArrayList<Character> chars = this.getMap().getCharacters();
+        for(Character c: chars) {
+            if (c instanceof NonPlayableCharacter) {
+                NonPlayableCharacter npc = (NonPlayableCharacter) c;
+                if (MoteurGraphique.getFrame() % 10 == 0) {
+                    final int rand = (int)Math.floor(Math.random() * 4);
+                    this.commande(npc, new MovingSimple(rand));
+                }
+            }
+        }
     }
 
 }

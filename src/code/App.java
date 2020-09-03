@@ -26,13 +26,7 @@ public class App {
 
         Jeu jeu = new Jeu();
 
-        Map map = jeu.getMap();
-        ArrayList<Character> characters = map.getCharacters();
-        for (Character c : characters) {
-            if (c instanceof NonPlayableCharacter) {
-                FrameListenerUpdater.addListener((NonPlayableCharacter)c);
-            }
-        }
+        FrameListenerUpdater.addListener(jeu);
 
         Graphique graphique = new Graphique(jeu);
         JeuControleur jeuControleur = new JeuControleur(jeu);
