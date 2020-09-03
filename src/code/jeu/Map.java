@@ -159,4 +159,14 @@ public class Map {
         return rows;
     }
 
+    /**
+     * Méthode qui vérifie si tous les personnages ne sont pas dans les murs. Si oui, renvoie false et supprime le personnage qui bloque.
+     * @return
+     */
+    public boolean verify() {
+        for(Character c : this.characters) {
+            final int temp = ;
+        }
+    }
+
 }
