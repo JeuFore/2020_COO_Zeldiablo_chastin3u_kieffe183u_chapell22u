@@ -1,11 +1,6 @@
 package code.block;
 
-public class Block {
-
-    public final static Block vide = new Block("tank", 3, 0);
-    public final static Block wall = new Block("tank", 3, 1);
-    public final static Block trap = new Block("trap", 2, 2);
-    public final static Block fire = new Block("tank", 3, 3);
+public abstract class Block {
 
     private String nom;
 
