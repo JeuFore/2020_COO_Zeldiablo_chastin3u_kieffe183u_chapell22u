@@ -52,7 +52,7 @@ public class Jeu {
 
             if (clavier.isPressed(83)) {
                 gererCollision(j.getPosition().getX(), j.getPosition().getY() - 1);
-                j.move(0, -1);
+                j.move(0, 1);
                 j.setFacingView(FacingProperty.FACING_DOWN);
             }
             if (clavier.isPressed(81)) {
@@ -62,7 +62,7 @@ public class Jeu {
             }
             if (clavier.isPressed(90)) {
                 gererCollision(j.getPosition().getX(), j.getPosition().getY() + 1);
-                j.move(0, 1);
+                j.move(0, -1);
                 j.setFacingView(FacingProperty.FACING_UP);
             }
             if (clavier.isPressed(68)) {
