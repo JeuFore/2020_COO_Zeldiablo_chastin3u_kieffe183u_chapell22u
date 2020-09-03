@@ -1,8 +1,8 @@
 package code.block;
 
-public class empty extends Block {
+public class Empty extends Block {
 
-    public empty() {
+    public Empty() {
         super("empty", 0, 0);
     }
 
