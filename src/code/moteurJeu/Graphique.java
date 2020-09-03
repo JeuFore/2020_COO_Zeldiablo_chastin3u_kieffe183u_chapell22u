@@ -27,7 +27,6 @@ public class Graphique implements DessinAbstract {
             for (int j = 0; j < r.getSize(); j++) {
                 if (r.getTile(j).getId() == 1)
                     Sprites.dessinerCentre(graphics, "tank_12_0", j * 30 + 15, i * 30 + 15);
-                    System.out.println(r.getTile(j));
             }
             i++;
         }
@@ -39,10 +38,11 @@ public class Graphique implements DessinAbstract {
                         + joueur.getFacingProperty().getView(),
                 joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
 
-        if (this.jeu.getActualBlock().getActif())
-            Sprites.dessinerCentre(graphics,
-                    this.jeu.getActualBlock().getNom() + "_" + this.jeu.getActualBlock().getEtat() + "_0",
-                    joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
+        if (this.jeu.getActualBlock() != null)
+            if (this.jeu.getActualBlock().getAnimate() != 0)
+                Sprites.dessinerCentre(graphics,
+                        this.jeu.getActualBlock().getNom() + "_" + this.jeu.getActualBlock().getAnimate() + "_0",
+                        joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
 
         graphics.dispose();
     }

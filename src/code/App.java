@@ -14,7 +14,7 @@ public class App {
 
         Sprites.chargerFeuille("tank", "./documents/images/tank_tiles.png", 22, 12);
 
-        Sprites.chargerFeuille("trap", "./documents/images/trap.png", 5, 1);
+        Sprites.chargerFeuille("trap", "./documents/images/beartrap.png", 5, 1);
 
         Jeu jeu = new Jeu();
 

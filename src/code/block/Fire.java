@@ -1,7 +1,7 @@
 package code.block;
 
-public class Fire extends Trap {
+public class Fire extends AnimateBlock {
     public Fire() {
-        super("tank", 3, 3, 5, true);
+        super("tank", 4, 5, -2, true);
     }
 }
