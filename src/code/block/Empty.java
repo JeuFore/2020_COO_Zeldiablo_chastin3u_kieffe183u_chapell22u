@@ -3,7 +3,7 @@ package code.block;
 public class Empty extends Block {
 
     public Empty() {
-        super("empty", 0, 0, false);
+        super("tank_5_4", 0);
     }
 
 }

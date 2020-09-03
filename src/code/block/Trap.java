@@ -1,9 +1,16 @@
 package code.block;
 
-public class Trap extends Block {
+public class Trap extends AnimateBlock {
 
-    public Trap() {
-        super("trap", 2, 2, true);
+    private int degat;
+
+    public Trap(String nom, int id, int degat, int nbAnimation) {
+        super(nom, id, nbAnimation);
+        this.degat = degat;
     }
-    
+
+    public int getDegat() {
+        return this.degat;
+    }
+
 }

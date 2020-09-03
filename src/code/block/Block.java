@@ -4,39 +4,21 @@ public abstract class Block {
 
     private String nom;
 
-    private int degat;
-
     private int etat;
 
     private int id;
 
     private boolean actif;
 
-    private boolean traversable;
-
-    public Block(String nom, int degat, int id, boolean traversable) {
+    public Block(String nom, int id) {
         this.nom = nom;
-        this.degat = degat;
         this.etat = 0;
         this.id = id;
         this.actif = false;
-        this.traversable = true;
-    }
-
-    public boolean isTraversable() {
-        return this.traversable;
-    }
-
-    public void setTraversable(boolean traversable) {
-        this.traversable = traversable;
     }
 
     public int getId() {
         return this.id;
-    }
-
-    public int getDegat() {
-        return this.degat;
     }
 
     public int getEtat() {
@@ -65,7 +47,7 @@ public abstract class Block {
     }
 
     public String toString() {
-        return "Le block " + this.nom + " fait " + this.degat + " dégats et a pour id " + this.id;
+        return "Le block " + this.nom + " fait dégats et a pour id " + this.id;
     }
 
 }

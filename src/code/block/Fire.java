@@ -1,7 +1,7 @@
 package code.block;
 
-public class Fire extends Block {
+public class Fire extends Trap {
     public Fire() {
-        super("fire", 3, 3, true);
+        super("tank", 3, 3, 5);
     }
 }
