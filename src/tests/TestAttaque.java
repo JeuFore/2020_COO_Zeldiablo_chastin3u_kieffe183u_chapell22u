@@ -26,11 +26,11 @@ public class TestAttaque {
 	@Test
 	public void testAttaqueAdventurer() {
 		File f = getFile("tests/map/level_1.txt");
-		Map m = new Map(f);
-		m.getCharacters().add(new Advanturer("Jacques", 10, 0, 0));
-		m.getCharacters().add(new Monster("TANK", 10, 1, 0));
-		m.gererAttaque(m.getCharacters().get(0).getPosition().getX(), m.getCharacters().get(0).getPosition().getY(), m.getCharacters().get(0));
-		assertEquals("Le monstre devrait avoir perdu des points de vies",6 ,m.getCharacters().get(1).getVie());
+		Advanturer j = new Advanturer("Bruno",10,0,0);
+		Jeu jeu = new Jeu(f,j);
+		jeu.getMap().getCharacters().add(new Monster("Robert",10,1,0));
+		jeu.getMap().gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
+		assertEquals("Le monstre devrait avoir perdu des points de vie", 6, jeu.getMap().getCharacters().get(1).getVie());
 	}
 	
 	@Test
