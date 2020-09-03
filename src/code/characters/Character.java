@@ -158,13 +158,6 @@ public abstract class Character {
     public void setFacingView(int v) {
         this.facingProperty.setView(v);
     }
-    
-    /**
-     * Methode qui permet au character d'attaquer
-     */    
-    public void subirDegat(int dmg) {
-    	this.vie -= dmg;
-    }
 
     /**
      * Méthode toString
@@ -183,10 +176,18 @@ public abstract class Character {
         return res.toString();
     }
 
+    /**
+     * Methode de getter des degats du character
+     * @return int
+     */
 	public int getDmg() {
 		return dmg;
-	}
-
+    }
+    
+    /**
+     * Methode de setter des degats du character
+     * @param dmg
+     */
 	public void setDmg(int dmg) {
 		this.dmg = dmg;
 	}

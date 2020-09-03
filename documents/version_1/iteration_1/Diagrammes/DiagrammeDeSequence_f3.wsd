@@ -1,11 +1,11 @@
 @startuml
 
 Main -> Jeu : commande()
-Jeu  -> Jeu : gererCollision(j.positionX()+1, j.positionY())
+Jeu  --> Jeu : gererCollision(j.positionX()+1, j.positionY())
 Jeu -> Joueur : getPositionX() \ngetPositionY()
-Jeu <- Joueur : 0,0
+Jeu <-- Joueur : 0,0
 Jeu -> Joueur : move(1,0)
-Jeu <- Joueur : void 
-Main <- Jeu : void
+Jeu <-- Joueur : void 
+Main <-- Jeu : void
 
 @enduml

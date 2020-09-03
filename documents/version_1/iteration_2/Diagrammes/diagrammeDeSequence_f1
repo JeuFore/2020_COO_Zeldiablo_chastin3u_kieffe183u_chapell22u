@@ -3,15 +3,13 @@
 Main -> Jeu : gererDeclencheur()
 Jeu -> Joueur : getPosition()
 Joueur -> Position : getPositionX() getPositionY() 
-Joueur <- Position : (2,2)
-Joueur -> Jeu : (2,2)
-group si : getTile = ?
+Joueur <-- Position : (2,2)
+Joueur --> Jeu : (2,2)
 Jeu -> Map : getTile()
-Jeu <- Map : 3
-group instance of Playable
+Jeu <-- Map : 3
 Jeu -> Joueur : changerVie(2)
-Joueur -> Jeu : void
-Jeu -> Main : "Tu as trouve une fontaine de soin, +2 points de vie!"
+Joueur --> Jeu : void
+Jeu --> Main : "Tu as trouve une fontaine de soin, +2 points de vie!"
 
 
 

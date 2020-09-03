@@ -71,7 +71,7 @@ public class Jeu {
                 System.out.println(this.carte.getCharacters().get(0).getVie());
             }
         } else if (j instanceof NonPlayableCharacter) {
-
+        	
         }
         gererDeclencheur(j.getPosition().getX(), j.getPosition().getY(), this.j);
     }

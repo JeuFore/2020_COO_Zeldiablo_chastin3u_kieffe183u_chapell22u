@@ -1,0 +1,17 @@
+@startuml
+
+Jeu -> Map : gererAttaque(j.getPosition(),j.getPosition(),j)
+Map -> Character : getX(),getY()
+Character --> Map : (3,3)
+    group pour i de 0 à tout les character dans la liste 
+Map -> Character : instanceof Wizard
+Map <-- Character : true
+Map --> Map : etreACote(0,2,j,i)\n true
+Map -> Wizard : j.getMana() > 0
+Map <-- Wizard : true
+Map -> Character : subirDegats(j.getDmg())
+Map <-- Character : void
+Map -> Wizard : changerMana(-1)
+Map <-- Wizard : void
+Map --> Jeu : void
+@enduml
