@@ -2,6 +2,8 @@ package code.block;
 
 public class Block {
 
+    public final static Block vide = new Block("tank", 3, 0);
+    public final static Block wall = new Block("tank", 3, 1);
     public final static Block trap = new Block("trap", 2, 2);
     public final static Block fire = new Block("tank", 3, 3);
 
@@ -39,7 +41,7 @@ public class Block {
         return this.nom;
     }
 
-    public boolean getActif(){
+    public boolean getActif() {
         return this.actif;
     }
 
@@ -48,10 +50,12 @@ public class Block {
         this.etat = 4;
     }
 
+    public boolean dejaActiver() {
+        return !this.actif;
+    }
+
     public void changerEtat() {
         this.etat--;
-        if(this.etat == 0)
-            this.actif = false;
     }
 
     public String toString() {

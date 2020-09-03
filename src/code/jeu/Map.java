@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import code.block.Block;
+
 /**
  * Classe représentant une carte d'un niveau
  */
@@ -40,6 +42,7 @@ public class Map {
 
     /**
      * Getter de characters
+     * 
      * @return les personnages de cette carte
      */
     public ArrayList<Character> getCharacters() {
@@ -48,6 +51,7 @@ public class Map {
 
     /**
      * Setter de characters
+     * 
      * @param characters personnages
      */
     public void setCharacters(ArrayList<Character> characters) {
@@ -66,6 +70,7 @@ public class Map {
 
     /**
      * Getter de map
+     * 
      * @return la map
      */
     public ArrayList<Row> getMap() {
@@ -73,7 +78,9 @@ public class Map {
     }
 
     /**
-     * Méthode renvoyant true si les coordonnées passées en paramètres sont bien à l'intérieur de la carte
+     * Méthode renvoyant true si les coordonnées passées en paramètres sont bien à
+     * l'intérieur de la carte
+     * 
      * @param x coordonnée x
      * @param y coordonnée y
      * @return true si les coordonnées sont dans la map
@@ -81,33 +88,34 @@ public class Map {
     public boolean isInBounds(int x, int y) {
         try {
             Row row = this.map.get(y);
-            int tile = row.getTile(x);
-            if (tile == -1) throw new IndexOutOfBoundsException();
+            int tile = row.getTile(x).getId();
+            if (tile == -1)
+                throw new IndexOutOfBoundsException();
             return true;
-        }
-        catch (IndexOutOfBoundsException oob) {
+        } catch (IndexOutOfBoundsException oob) {
             return false;
         }
     }
 
     /**
      * Retourne la valeur de la case demandée
+     * 
      * @param x coordonnée x
      * @param y coordonnée y
      * @return valeur de la case
      */
-    public int getTile(int x, int y) {
+    public Block getTile(int x, int y) {
         if (isInBounds(x, y)) {
             Row row = this.map.get(y);
             return row.getTile(x);
-        }
-        else {
-            return -1;
+        } else {
+            return null;
         }
     }
 
     /**
      * Méthode qui charge un niveau à partir d'un fichier
+     * 
      * @param file fichier contenant le niveau
      * @return la map
      */
@@ -123,27 +131,27 @@ public class Map {
             }
             buff.close();
             map = convertLinesToMap(Arrays.asList(lines.toArray()).toArray(new String[lines.toArray().length]));
-        }
-        catch (IOException ioe) {
+        } catch (IOException ioe) {
             System.out.println("This map does not exist");
-        }
-        catch (NumberFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             System.out.println("There is a problem in the level structure");
         }
         return map;
     }
-    
+
     /**
-     * Méthode qui convertit un tableau de chaîne de caractères dans le format d'un niveau
+     * Méthode qui convertit un tableau de chaîne de caractères dans le format d'un
+     * niveau
+     * 
      * @param lines chaînes de caractères
      * @return niveau
      */
     private static ArrayList<Row> convertLinesToMap(String[] lines) throws NumberFormatException {
         ArrayList<Row> rows = new ArrayList<Row>();
-        for(String line : lines) {
+        for (String line : lines) {
             String[] chars = line.split(",");
             Row row = new Row();
-            for(String character : chars) {
+            for (String character : chars) {
                 row.addTile(Integer.parseInt(character));
             }
             rows.add(row);

@@ -90,7 +90,7 @@ public class Jeu {
         } else {
             j.bloquer(false);
         }
-        if (Arrays.stream(tab).anyMatch(("" + carte.getTile(x, y))::equals)) {
+        if (Arrays.stream(tab).anyMatch(("" + carte.getTile(x, y).getId())::equals)) {
             j.bloquer(true);
         } else {
             j.bloquer(false);
@@ -122,14 +122,14 @@ public class Jeu {
      */
     public void gererDeclencheur(int x, int y, Character character) {
 
-        int number = carte.getTile(character.getPosition().getX(), character.getPosition().getY());
+        Block block = carte.getTile(character.getPosition().getX(), character.getPosition().getY());
 
         this.actualBlock.changerEtat();
-        
-        if(number != 0){
-            this.actualBlock = this.blocksList.getBlock(number);
+
+        if(block.getActif()){
+            this.actualBlock = block;
             this.actualBlock.activer();
-            character.changerVie(this.actualBlock.getDegat());
+            character.changerVie(block.getDegat());
         }
 
         /**

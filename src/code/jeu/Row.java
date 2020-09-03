@@ -2,6 +2,8 @@ package code.jeu;
 
 import java.util.ArrayList;
 
+import code.block.*;
+
 /**
  * Classe représentant une ligne d'une carte d'un niveau
  */
@@ -10,13 +12,14 @@ public class Row {
     /**
      * Attribut représentant les cases de la ligne
      */
-    private ArrayList<Integer> tiles;
+    private ArrayList<Block> tiles;
 
     /**
      * Construit une ligne à partir des cases déjà remplies
+     * 
      * @param integers cases de la ligne
      */
-    public Row(ArrayList<Integer> integers) {
+    public Row(ArrayList<Block> integers) {
         this.tiles = integers;
     }
 
@@ -24,29 +27,48 @@ public class Row {
      * Constuit une ligne vide
      */
     public Row() {
-        this.tiles = new ArrayList<Integer>();
+        this.tiles = new ArrayList<Block>();
     }
 
     /**
      * Renvoie la valeur de la case de la ligne demandée
+     * 
      * @param coord index de la case dans la liste
      * @return valeur de la case (-1 si la case n'est pas trouvée)
      */
-    public int getTile(int coord) {
+    public Block getTile(int coord) {
         try {
             return this.tiles.get(coord);
         } catch (IndexOutOfBoundsException oob) {
-            return -1;
+            return null;
         }
-        
+
     }
 
     /**
      * Méthode qui ajoute une case au bout de la liste
+     * 
      * @param tile valeur de la case à ajouter
      */
     public void addTile(int tile) {
-        this.tiles.add(tile);
+        Block temp = null;
+        switch (tile) {
+            case 0:
+                temp = Block.vide;
+                break;
+            case 1:
+                temp = Block.wall;
+                break;
+            case 2:
+                temp = Block.trap;
+                break;
+            case 3:
+                temp = Block.fire;
+                break;
+            default:
+                break;
+        }
+        this.tiles.add(temp);
     }
 
     /**
@@ -58,10 +80,11 @@ public class Row {
 
     /**
      * Méthode qui retourne la taille de Row
+     * 
      * @return taille de Row
      */
-    public int getSize(){
+    public int getSize() {
         return this.tiles.size();
     }
-    
+
 }
