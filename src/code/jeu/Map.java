@@ -83,7 +83,9 @@ public class Map {
      */
     public Map(File file) {
         this.setCharacters(new ArrayList<Character>());
+        this.characters.add(new Monster("Robert", 5, 5, 5));
         this.characters.add(new Monster("Robert_2", 5, 5, 5));
+        this.characters.add(new Monster("Robert_3", 5, 5, 5));
         this.map = load(file);
     }
 
