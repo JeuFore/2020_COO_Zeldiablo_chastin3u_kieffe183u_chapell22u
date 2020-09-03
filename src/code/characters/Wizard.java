@@ -5,7 +5,7 @@ public class Wizard extends PlayableCharacter implements MagicPower {
     private int mana;
 
     public Wizard(String name, int life, int x, int y, int mana) {
-        super(name, life, x, y, new FacingProperty("PlayableCharacter", 10, 4));
+        super(name, life, x, y, new FacingProperty("PlayableCharacter", 10, 4),2);
         this.mana = mana;
     }
 

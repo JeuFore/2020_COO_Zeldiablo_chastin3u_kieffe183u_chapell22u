@@ -29,6 +29,11 @@ public abstract class Character {
      * Orientation du personnage à l'instant T
      */
     private FacingProperty facingProperty;
+    
+    /**
+     * Points de d�gats du personnage 
+     */
+    private int dmg;
 
     /**
      * Construit un Personnage
@@ -38,12 +43,13 @@ public abstract class Character {
      * @param y position y
      * @param facingProperty propriétés de l'affichage
      */
-    public Character(String name, int life, int x, int y, FacingProperty facingProperty) {
+    public Character(String name, int life, int x, int y, FacingProperty facingProperty, int d) {
         this.nom = name;
         this.vie = life;
         this.collision = false;
         this.position = new Position(x, y);
         this.facingProperty = facingProperty;
+        this.dmg = d;
     }
 
     /**
@@ -148,9 +154,7 @@ public abstract class Character {
     
     /**
      * Methode qui permet au character d'attaquer
-     * 
-     */
-        
+     */    
     public void subirDegat(int dmg) {
     	this.vie -= dmg;
     }
@@ -171,5 +175,13 @@ public abstract class Character {
         res.append("de classe \"" + this.getClass().getSimpleName() + "\"");
         return res.toString();
     }
+
+	public int getDmg() {
+		return dmg;
+	}
+
+	public void setDmg(int dmg) {
+		this.dmg = dmg;
+	}
 
 }

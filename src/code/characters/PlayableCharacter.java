@@ -2,8 +2,8 @@ package code.characters;
 
 public class PlayableCharacter extends Character implements Playable {
 
-    public PlayableCharacter(String name, int life, int x, int y, FacingProperty f) {
-        super(name, life, x, y, f);
+    public PlayableCharacter(String name, int life, int x, int y, FacingProperty f, int d) {
+        super(name, life, x, y, f,d);
     }
 
     private int xp;

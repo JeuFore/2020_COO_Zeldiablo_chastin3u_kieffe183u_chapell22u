@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import code.block.Block;
+import code.characters.*;
 import code.characters.Character;
 
 /**
@@ -159,7 +160,60 @@ public class Map {
         }
         return rows;
     }
-
+    
+    /**
+     * Methode de gestion des attaques des personnages dans la map
+     * @param x,y,c,dmg
+     * 
+     */
+    public void gererAttaque(int x, int y, Character c) {
+    	int fp = c.getFacingProperty().getId();
+    	Position p = new Position(x,y);
+    	switch(fp) {
+    	case 3:
+    		for (int i = 0 ; i < characters.size(); i++) {
+        		if(etreACote(0,1,c,i)) {
+        			characters.get(i).changerVie(c.getDmg());
+        			}
+    			}
+    		break;
+    	case 2:
+    		for (int i = 0 ; i < characters.size(); i++) {
+        		if(etreACote(1,0,c,i)) {
+        			characters.get(i).changerVie(c.getDmg());
+        			}
+    		}
+        		break;
+        case 0:
+        	for (int i = 0 ; i < characters.size(); i++) {
+        		if(etreACote(0,-1,c,i)) {
+        			characters.get(i).changerVie(c.getDmg());
+        			}
+    			}
+        	break;
+        case 1:
+        	for (int i = 0 ; i < characters.size(); i++) {
+        		if(etreACote(-1,0,c,i)) {
+        			characters.get(i).changerVie(c.getDmg());
+        			}
+    			}
+    		}
+    	}
+    
+    public boolean etreACote(int fpX, int fpY, Character c, int indice) {
+    	boolean res = false;
+    	if(c instanceof Wizard) {
+    		
+    	} else {
+    		
+    	  	if (characters.get(indice).getPosition().getX() == c.getPosition().getX()+fpX && characters.get(indice).getPosition().getY() == c.getPosition().getY() +fpY){
+    	  		res = true;
+        	} else res = false;
+    	}
+    	return res;
+    }
+    
+    
     /**
      * Methode qui verifie si tous les personnages ne sont pas dans les murs. Si oui, renvoie false et supprime le personnage qui bloque.
      * @return true si tous les monstres sont bien placés
