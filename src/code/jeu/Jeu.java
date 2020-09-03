@@ -153,7 +153,7 @@ public class Jeu implements FrameListener {
         for(Character c: chars) {
             if (c instanceof NonPlayableCharacter) {
                 NonPlayableCharacter npc = (NonPlayableCharacter) c;
-                if (MoteurGraphique.getFrame() % 10 == 0) {
+                if (MoteurGraphique.getFrame() % 5 == 0) {
                     final int rand = (int)Math.floor(Math.random() * 4);
                     this.commande(npc, new MovingSimple(rand));
                 }
