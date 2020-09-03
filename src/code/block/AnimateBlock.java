@@ -5,8 +5,8 @@ public class AnimateBlock extends Block {
     private int nbAnimation;
     private int animate;
 
-    public AnimateBlock(String nom, int id, int nbAnimation) {
-        super(nom, id);
+    public AnimateBlock(String nom, int id, int nbAnimation, boolean traversable) {
+        super(nom, id, traversable);
         this.nbAnimation = nbAnimation - 1;
         this.animate = 0;
     }

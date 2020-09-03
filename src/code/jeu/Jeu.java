@@ -14,8 +14,6 @@ public class Jeu {
     private Character j;
     private Map carte;
 
-    private BlocksList blocksList;
-
     private Block actualBlock;
 
     /**
@@ -28,8 +26,7 @@ public class Jeu {
         this.j = new Wizard("Bob", 10, 1, 1, 10);
         File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
-        this.blocksList = new BlocksList();
-        this.actualBlock = new Block("Vide", 0, -1);
+        this.actualBlock = new Empty();
         // sc.close();
     }
 

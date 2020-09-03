@@ -60,7 +60,7 @@ public class Row {
                 temp = new Wall();
                 break;
             case 2:
-                temp = new Trap();
+                temp = new BearTrap();
                 break;
             case 3:
                 temp = new Fire();

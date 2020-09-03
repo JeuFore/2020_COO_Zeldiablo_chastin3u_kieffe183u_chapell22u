@@ -10,11 +10,22 @@ public abstract class Block {
 
     private boolean actif;
 
-    public Block(String nom, int id) {
+    private boolean traversable;
+
+    public Block(String nom, int id, boolean traversable) {
         this.nom = nom;
         this.etat = 0;
         this.id = id;
         this.actif = false;
+        this.traversable = traversable;
+    }
+
+    public boolean isTraversable() {
+        return this.traversable;
+    }
+
+    public void setTraversable(boolean traversable) {
+        this.traversable = traversable;
     }
 
     public int getId() {
