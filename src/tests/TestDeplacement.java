@@ -54,7 +54,7 @@ public class TestDeplacement {
     public void testDeplacementCollisionOutOFBounds(){
     	File file = getFile("tests/map/level_3.txt");
         Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,0,0));
-        jeu.gererCollision(jeu.getCharacter().getPosition().getX()+1, jeu.getCharacter().getPosition().getY());
+        jeu.gererCollision(jeu.getCharacter().getPosition().getX()+1, jeu.getCharacter().getPosition().getY(), jeu.getCharacter());
         jeu.getCharacter().move(-1, 0);
         assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getCharacter().getPosition().getX());
         assertEquals("La collision devrait etre active", true, jeu.getCharacter().isCollision());
@@ -65,7 +65,7 @@ public class TestDeplacement {
     	File file = getFile("tests/map/level_3.txt");
     	System.out.println(file);
     	Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,0,0));
-        jeu.gererCollision(jeu.getCharacter().getPosition().getX()+1, jeu.getCharacter().getPosition().getY());
+        jeu.gererCollision(jeu.getCharacter().getPosition().getX()+1, jeu.getCharacter().getPosition().getY(), jeu.getCharacter());
         jeu.getCharacter().move(1, 0);
         assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getCharacter().getPosition().getX());
         assertEquals("La collision devrait etre active", true, jeu.getCharacter().isCollision());
@@ -75,7 +75,7 @@ public class TestDeplacement {
     public void testDeplacementDansLeVide(){
     	File file = getFile("tests/map/level_3.txt");
     	Jeu jeu = new Jeu(file, new Advanturer("Bruno",10,0,0));
-        jeu.gererCollision(jeu.getCharacter().getPosition().getX()+1, jeu.getCharacter().getPosition().getY());
+        jeu.gererCollision(jeu.getCharacter().getPosition().getX()+1, jeu.getCharacter().getPosition().getY(),jeu.getCharacter());
         jeu.getCharacter().move(0, -1);
         assertEquals("Le joueur devrait ne pas avoir bouge", 0, jeu.getCharacter().getPosition().getY());
         assertEquals("La collision devrait etre active", true, jeu.getCharacter().isCollision());

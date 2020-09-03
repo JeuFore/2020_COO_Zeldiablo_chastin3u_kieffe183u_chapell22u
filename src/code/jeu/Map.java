@@ -189,14 +189,13 @@ public class Map {
         		if(c instanceof Wizard) {
         			if(etreACote(0,2,c,i) || etreACote(2,0,c,i) || etreACote(0,-2,c,i) || etreACote(-2,0,c,i)) {
             			if(((Wizard)c).getMana() > 0) {
-            				characters.get(i).subirDegat(c.getDmg());
+            				characters.get(i).changerVie(-c.getDmg());
             				((Wizard)c).changerMana(-1);
-            				System.out.println(((Wizard)c).getMana());
             				}
         				}
         			} else {
         		if(etreACote(0,1,c,i) || etreACote(1,0,c,i) || etreACote(0,-1,c,i) || etreACote(-1,0,c,i)) {
-        			characters.get(i).subirDegat(c.getDmg());
+        			characters.get(i).changerVie(-c.getDmg());
         			}
         		}
    			}
