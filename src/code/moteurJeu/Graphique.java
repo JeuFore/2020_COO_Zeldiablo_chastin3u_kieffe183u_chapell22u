@@ -23,14 +23,15 @@ public class Graphique implements DessinAbstract {
 
         Graphics2D graphics = image.createGraphics();
 
-        /**
-         * // permert de dessiner les murs int i = 0; while (i <
-         * this.jeu.getMap().getMap().size()) { Row r =
-         * this.jeu.getMap().getMap().get(i); for (int j = 0; j < r.getSize(); j++) { if
-         * (r.getTile(j).getId() == 1) Sprites.dessinerCentre(graphics, "tank_12_0", j *
-         * 30 + 15, i * 30 + 15); } i++; }
-         */
+        code.characters.Character joueur = this.jeu.getCharacter();
 
+        // Permet de dessiner le joueur
+        Sprites.dessinerCentre(graphics,
+                joueur.getFacingProperty().getSpriteName() + "_" + joueur.getFacingProperty().getId() + "_"
+                        + (joueur.getFacingProperty().getView() + joueur.getFacingProperty().getIdYaxis()),
+                joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
+
+        //  Permet d'afficher tous les blocks du jeu
         for (int i = 0; i < this.jeu.getMap().getMap().size(); i++) {
             Row r = this.jeu.getMap().getMap().get(i);
             for (int j = 0; j < r.getTiles().size(); j++) {
@@ -41,23 +42,6 @@ public class Graphique implements DessinAbstract {
                 }
             }
         }
-
-        code.characters.Character joueur = this.jeu.getCharacter();
-
-        // Permet de dessiner le joueur
-        Sprites.dessinerCentre(graphics,
-                joueur.getFacingProperty().getSpriteName() + "_" + joueur.getFacingProperty().getId() + "_"
-                        + (joueur.getFacingProperty().getView() + joueur.getFacingProperty().getIdYaxis()),
-                joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
-
-        /**
-         * // permet de dessiner les blocks animés if (this.jeu.getActualBlock() !=
-         * null) if (this.jeu.getActualBlock().getAnimate() != 0)
-         * Sprites.dessinerCentre(graphics, this.jeu.getActualBlock().getNom() + "_" +
-         * this.jeu.getActualBlock().getAnimate() + "_0", joueur.getPosition().getX() *
-         * 30 + 15, joueur.getPosition().getY() * 30 + 15);
-         * 
-         */
 
         // Permet de dessiner les characters autres que le joueur
         for (code.characters.Character character : this.jeu.getMap().getCharacters()) {

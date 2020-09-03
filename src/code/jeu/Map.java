@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import code.block.Block;
+import code.block.Border;
 import code.characters.*;
 import code.characters.Character;
 
@@ -128,7 +129,7 @@ public class Map {
             Row row = this.map.get(y);
             return row.getTile(x);
         } else {
-            return null;
+            return new Border();
         }
     }
 
