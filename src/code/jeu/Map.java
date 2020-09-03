@@ -173,43 +173,62 @@ public class Map {
     	case 3:
     		for (int i = 0 ; i < characters.size(); i++) {
         		if(etreACote(0,1,c,i)) {
-        			characters.get(i).changerVie(c.getDmg());
+        			characters.get(i).subirDegat(c.getDmg());
+        			}
+        		if(characters.get(i) instanceof Wizard) {
+        			if(etreACote(0,2,c,i)) {
+            			characters.get(i).subirDegat(c.getDmg());
+            			((Wizard)characters.get(i)).changerMana(-1);
+        				}
         			}
     			}
     		break;
     	case 2:
     		for (int i = 0 ; i < characters.size(); i++) {
         		if(etreACote(1,0,c,i)) {
-        			characters.get(i).changerVie(c.getDmg());
+        			characters.get(i).subirDegat(c.getDmg());
         			}
-    		}
+        		if(characters.get(i) instanceof Wizard) {
+        			if(etreACote(2,0,c,i)) {
+        				characters.get(i).subirDegat(c.getDmg());
+            			((Wizard)characters.get(i)).changerMana(-1);
+        				}
+        			}	
+    			}
         		break;
         case 0:
         	for (int i = 0 ; i < characters.size(); i++) {
         		if(etreACote(0,-1,c,i)) {
-        			characters.get(i).changerVie(c.getDmg());
+        			characters.get(i).subirDegat(c.getDmg());
+        			}
+        		if(characters.get(i) instanceof Wizard) {
+        			if(etreACote(0,-2,c,i)) {
+        				characters.get(i).subirDegat(c.getDmg());
+            			((Wizard)characters.get(i)).changerMana(-1);
+        				}
         			}
     			}
         	break;
         case 1:
         	for (int i = 0 ; i < characters.size(); i++) {
         		if(etreACote(-1,0,c,i)) {
-        			characters.get(i).changerVie(c.getDmg());
+        			characters.get(i).subirDegat(c.getDmg());
         			}
+        	if(characters.get(i) instanceof Wizard) {
+    			if(etreACote(-2,0,c,i)) {
+    				characters.get(i).subirDegat(c.getDmg());
+        			((Wizard)characters.get(i)).changerMana(-1);
+    				}
     			}
     		}
     	}
+    }
     
     public boolean etreACote(int fpX, int fpY, Character c, int indice) {
     	boolean res = false;
-    	if(c instanceof Wizard) {
-    		
-    	} else {
-    		
     	  	if (characters.get(indice).getPosition().getX() == c.getPosition().getX()+fpX && characters.get(indice).getPosition().getY() == c.getPosition().getY() +fpY){
     	  		res = true;
         	} else res = false;
-    	}
     	return res;
     }
     
