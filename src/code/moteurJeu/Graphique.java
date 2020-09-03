@@ -22,8 +22,8 @@ public class Graphique implements DessinAbstract {
         Graphics2D graphics = image.createGraphics();
 
         int i = 0;
-        while (i < this.jeu.getMap().size()) {
-            Row r = this.jeu.getMap().get(i);
+        while (i < this.jeu.getMap().getMap().size()) {
+            Row r = this.jeu.getMap().getMap().get(i);
             for (int j = 0; j < r.getSize(); j++) {
                 if (r.getTile(j).getId() == 1)
                     Sprites.dessinerCentre(graphics, "tank_12_0", j * 30 + 15, i * 30 + 15);
@@ -35,7 +35,7 @@ public class Graphique implements DessinAbstract {
 
         Sprites.dessinerCentre(graphics,
                 joueur.getFacingProperty().getSpriteName() + "_" + joueur.getFacingProperty().getId() + "_"
-                        + joueur.getFacingProperty().getView(),
+                        + (joueur.getFacingProperty().getView() + joueur.getFacingProperty().getIdYaxis()),
                 joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
 
         if (this.jeu.getActualBlock() != null)
@@ -43,6 +43,13 @@ public class Graphique implements DessinAbstract {
                 Sprites.dessinerCentre(graphics,
                         this.jeu.getActualBlock().getNom() + "_" + this.jeu.getActualBlock().getAnimate() + "_0",
                         joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
+
+        for (code.characters.Character character : this.jeu.getMap().getCharacters()) {
+            Sprites.dessinerCentre(graphics,
+                    character.getFacingProperty().getSpriteName() + "_" + character.getFacingProperty().getId() + "_"
+                            + (character.getFacingProperty().getView() + character.getFacingProperty().getIdYaxis()),
+                    character.getPosition().getX() * 30 + 15, character.getPosition().getY() * 30 + 15);
+        }
 
         graphics.dispose();
     }

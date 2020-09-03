@@ -12,7 +12,7 @@ public class FacingProperty {
     public final static int FACING_DOWN = 0;
 
     public FacingProperty(String n, int x, int y) {
-        this.view = 7;
+        this.view = FACING_DOWN;
         this.spriteName = n;
         this.idXaxis = x;
         this.idYaxis = y;
@@ -30,7 +30,15 @@ public class FacingProperty {
         return this.spriteName;
     }
 
+    public int getIdYaxis() {
+        return this.idYaxis;
+    }
+
     public void setView(int v) {
-        this.view = v + this.idYaxis;
+        this.view = v;
+    }
+
+    public String toString() {
+        return this.spriteName + " en position " + this.idXaxis + ", " + this.idYaxis;
     }
 }

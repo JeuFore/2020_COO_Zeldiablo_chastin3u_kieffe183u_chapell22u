@@ -83,6 +83,7 @@ public class Map {
      */
     public Map(File file) {
         this.setCharacters(new ArrayList<Character>());
+        this.characters.add(new Monster("Robert_2", 5, 5, 5));
         this.map = load(file);
     }
 
@@ -183,7 +184,7 @@ public class Map {
      * 
      */
     public void gererAttaque(int x, int y, Character c) {
-    	int fp = c.getFacingProperty().getId();
+    	int fp = c.getFacingProperty().getView();
     	Position p = new Position(x,y);
     	switch(fp) {
     	case 3:
