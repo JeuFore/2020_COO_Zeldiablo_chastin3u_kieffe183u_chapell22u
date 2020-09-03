@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import code.characters.Monster;
 import code.jeu.*;
 
 public class TestMap {
@@ -38,7 +39,7 @@ public class TestMap {
         ArrayList<Row> rows = map.getMap();
         for(Row row : rows) {
             for(int i = 0 ; i < 5 ; i++) {
-                assertEquals("Cela devrait être 0", 0, row.getTile(i));
+                assertEquals("Cela devrait être 0", 0, row.getTile(i).getId());
             }
         }
     }
@@ -67,14 +68,34 @@ public class TestMap {
     @Test
     public void test_getTile_notfound() {
         Map map = new Map(getFile("tests/map/level_1.txt"));
-        assertEquals("Cela devrait être hors des bordures", -1, map.getTile(0, 12));
+        assertEquals("Cela devrait être hors des bordures", null, map.getTile(0, 12));
     }
 
     @Test
     public void test_getTile_found() {
         Map map = new Map(getFile("tests/map/level_2.txt"));
-        assertEquals("Cela devrait être valoir 0", 0, map.getTile(1, 1));
-        assertEquals("Cela devrait être valoir -1", -1, map.getTile(4, 1));
-        assertEquals("Cela devrait être valoir 1", 1, map.getTile(3, 5));
+        assertEquals("Cela devrait être valoir 0", 0, map.getTile(1, 1).getId());
+        assertEquals("Cela devrait être valoir null", null, map.getTile(4, 1));
+        assertEquals("Cela devrait être valoir 1", 1, map.getTile(3, 5).getId());
+    }
+
+    @Test
+    public void test_verify() {
+        Map map = new Map(getFile("tests/map/level_2.txt"));
+        Monster robert = new Monster("Robert", 8, 1, 1);
+        map.ajouterCharacter(robert);
+        final boolean temp = map.verify();
+        assertFalse(temp);
+        assertEquals("The monster should still be there", 1, map.getCharacters().size());
+    }
+
+    @Test
+    public void test_verify_in_wall() {
+        Map map = new Map(getFile("tests/map/level_2.txt"));
+        Monster robert = new Monster("Robert", 8, 2, 5);
+        map.ajouterCharacter(robert);
+        final boolean temp = map.verify();
+        assertTrue(temp);
+        assertEquals("The monster should have disappeared", 0, map.getCharacters().size());
     }
 }

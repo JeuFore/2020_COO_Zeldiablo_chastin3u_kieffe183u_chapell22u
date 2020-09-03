@@ -52,6 +52,22 @@ public class Map {
     }
 
     /**
+     * Methode qui ajoute un Character a la map
+     * @param c character a ajouter
+     */
+    public void ajouterCharacter(Character c) {
+        this.characters.add(c);
+    }
+
+    /**
+     * Methode qui supprime un character a la map, a la place n
+     * @param n place du character a supprimer
+     */
+    public void supprimerCharacter(int n) {
+        this.characters.remove(n);
+    }
+
+    /**
      * Setter de characters
      * 
      * @param characters personnages
@@ -67,6 +83,7 @@ public class Map {
      */
     public Map(File file) {
         this.setCharacters(new ArrayList<Character>());
+        this.characters.add(new Monster("Robert_2", 5, 5, 5));
         this.map = load(file);
     }
 
@@ -90,8 +107,8 @@ public class Map {
     public boolean isInBounds(int x, int y) {
         try {
             Row row = this.map.get(y);
-            int tile = row.getTile(x).getId();
-            if (tile == -1)
+            Block block = row.getTile(x);
+            if (block == null)
                 throw new IndexOutOfBoundsException();
             return true;
         } catch (IndexOutOfBoundsException oob) {
@@ -167,7 +184,7 @@ public class Map {
      * 
      */
     public void gererAttaque(int x, int y, Character c) {
-    	int fp = c.getFacingProperty().getId();
+    	int fp = c.getFacingProperty().getView();
     	Position p = new Position(x,y);
     	switch(fp) {
     	case 3:

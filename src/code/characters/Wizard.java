@@ -27,7 +27,7 @@ public class Wizard extends PlayableCharacter implements MagicPower {
     @Override
     public String toString() {
         StringBuffer res = new StringBuffer(super.toString());
-        res.append(" Je possède des pouvoirs magiques (" + this.mana + ")");
+        res.append("Je possède des pouvoirs magiques (" + this.mana + ")");
         return res.toString();
     }
 

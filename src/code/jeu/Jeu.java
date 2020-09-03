@@ -2,8 +2,6 @@ package code.jeu;
 
 //import java.util.Scanner;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 import code.characters.*;
 import code.characters.Character;
 
@@ -23,8 +21,8 @@ public class Jeu {
 
     public Jeu() {
         // Scanner sc = new Scanner(System.in);
-        this.j = new Wizard("Bob", 10, 1, 1, 10);
-        File file = new File("src/map/level_3.txt");
+        this.j = new Advanturer("Bob", 10, 1, 1);
+        File file = new File("src/map/level_1.txt");
         this.carte = new Map(file);
         this.carte.verify();
         this.actualBlock = null;
@@ -112,8 +110,8 @@ public class Jeu {
      * 
      * @return la Map du jeu
      */
-    public ArrayList<Row> getMap() {
-        return this.carte.getMap();
+    public Map getMap() {
+        return this.carte;
     }
 
     /**
@@ -134,23 +132,6 @@ public class Jeu {
             } else
                 animateBlock.changeNbAnimation();
         }
-
-        /**
-         * if (this.explosion != 5) this.explosion++;
-         * 
-         * if (carte.getTile(c.getPosition().getX(), c.getPosition().getY()) == 2 &&
-         * this.explosion == 5) { c.changerVie(-2); System.out.println("Aie le piege...
-         * -2 points de vie."); this.explosion = 0;
-         * 
-         * } else if (c instanceof NonPlayableCharacter) { System.out.println("Quelqu un
-         * d autre a perdu de la vie... Prenez l avantage!"); } if
-         * ((carte.getTile(c.getPosition().getX(), c.getPosition().getY()) == 3)) {
-         * c.changerVie(2); if (c instanceof PlayableCharacter) System.out.println("Tu
-         * as trouve une fontaine de soin, +2 points de vie!"); else if (c instanceof
-         * NonPlayableCharacter) { System.out.println("Attention quelqu un d autre a
-         * recupere de la vie ... "); } }
-         * 
-         */
     }
 
     public AnimateBlock getActualBlock() {
