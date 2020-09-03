@@ -45,8 +45,7 @@ public class Jeu {
      */
 
     public void commande(code.moteurJeu.moteur.CClavier clavier) {
-       if (j instanceof PlayableCharacter) {
-
+        if (j instanceof PlayableCharacter) {
             if (clavier.isPressed(83)) {
                 gererCollision(j.getPosition().getX(), j.getPosition().getY() + 1);
                 j.move(0, 1);
@@ -68,7 +67,8 @@ public class Jeu {
                 j.setFacingView(FacingProperty.FACING_RIGHT);
             }
             if (clavier.isPressed(32)) {
-            	carte.gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
+                carte.gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
+                System.out.println(this.carte.getCharacters().get(0).getVie());
             }
         } else if (j instanceof NonPlayableCharacter) {
 
@@ -124,13 +124,20 @@ public class Jeu {
 
         if (block instanceof AnimateBlock) {
             AnimateBlock animateBlock = ((AnimateBlock) block);
-            if (animateBlock.getAnimate() == 0) {
-                this.actualBlock = animateBlock;
+            if (animateBlock.getActif()) {
                 animateBlock.activerAnimation();
+                this.actualBlock = animateBlock;
                 character.changerVie(animateBlock.getLife());
-            } else
-                animateBlock.changeNbAnimation();
+                if (animateBlock instanceof Trap)
+                    character.setStone(((Trap) animateBlock).getStone());
+            }
         }
+
+        if (this.actualBlock != null)
+            if (this.actualBlock.getVisible())
+                this.actualBlock.changeNbAnimation();
+            else if (!this.actualBlock.getActif())
+                character.setStone(false);
     }
 
     public AnimateBlock getActualBlock() {

@@ -1,9 +1,9 @@
 package code.block;
 
-public class BearTrap extends AnimateBlock {
+public class BearTrap extends Trap {
 
     public BearTrap() {
-        super("beartrap", 2, 5, -2, true);
+        super("tank_12_", 2, 11, -2, true, true);
     }
 
 }

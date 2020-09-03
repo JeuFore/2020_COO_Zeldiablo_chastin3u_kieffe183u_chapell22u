@@ -1,9 +1,16 @@
 package code.block;
 
-public class Trap extends AnimateBlock{
+public class Trap extends AnimateBlock {
 
-    public Trap(String nom, int id, int nbAnimation, int life, boolean traversable) {
+    private boolean stone;
+
+    public Trap(String nom, int id, int nbAnimation, int life, boolean traversable, boolean stone) {
         super(nom, id, nbAnimation, life, traversable);
+        this.stone = stone;
+    }
+
+    public boolean getStone() {
+        return this.stone;
     }
 
 }

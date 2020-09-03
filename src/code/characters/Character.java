@@ -31,9 +31,11 @@ public abstract class Character {
     private FacingProperty facingProperty;
     
     /**
-     * Points de dégats du personnage 
+     * Points de dï¿½gats du personnage 
      */
     private int dmg;
+
+    private boolean stone;
 
     /**
      * Construit un Personnage
@@ -50,6 +52,7 @@ public abstract class Character {
         this.position = new Position(x, y);
         this.facingProperty = facingProperty;
         this.dmg = d;
+        this.stone = false;
     }
 
     /**
@@ -58,7 +61,7 @@ public abstract class Character {
      * @param y dÃ©placement en y
      */
     public void move(int x, int y) {
-        if (!collision) {
+        if (!collision && !stone) {
             this.position.changerX(x);
             this.position.changerY(y);
         }
@@ -70,6 +73,10 @@ public abstract class Character {
      */
     public Position getPosition() {
         return position;
+    }
+
+    public void setStone(boolean stone) {
+        this.stone = stone;
     }
 
     /**
