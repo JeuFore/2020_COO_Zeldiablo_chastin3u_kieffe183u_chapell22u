@@ -150,8 +150,10 @@ public abstract class Character {
      * Methode qui permet au character d'attaquer
      * 
      */
-    
-    public abstract void attaquer();
+        
+    public void subirDegat(int dmg) {
+    	this.vie -= dmg;
+    }
 
     /**
      * Méthode toString
