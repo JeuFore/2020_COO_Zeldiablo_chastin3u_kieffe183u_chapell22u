@@ -4,7 +4,6 @@ package code.jeu;
 import java.io.File;
 import code.characters.*;
 import code.characters.Character;
-
 import code.block.*;
 
 public class Jeu {
