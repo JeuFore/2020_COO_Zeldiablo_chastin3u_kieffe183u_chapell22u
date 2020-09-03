@@ -2,8 +2,11 @@ package code.block;
 
 public class Heal extends AnimateBlock {
 
+    /**
+     * Construit un block heal
+     */
     public Heal() {
-        super("heal", 3, 5, 2, true);
+        super("tank_15_", 3, 10, 2, true);
     }
-    
+
 }
