@@ -63,6 +63,9 @@ public class Row {
                 temp = new BearTrap();
                 break;
             case 3:
+                temp = new Heal();
+                break;
+            case 4:
                 temp = new Fire();
                 break;
             default:

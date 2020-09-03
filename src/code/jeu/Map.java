@@ -161,18 +161,20 @@ public class Map {
     }
 
     /**
-     * Methode qui verifie si tous les personnages ne sont pas dans les murs. Si oui, renvoie false et supprime le personnage qui bloque.
+     * Methode qui verifie si tous les personnages ne sont pas dans les murs. Si
+     * oui, renvoie false et supprime le personnage qui bloque.
+     * 
      * @return true si tous les monstres sont bien placés
      */
     public boolean verify() {
         ArrayList<Character> tempChars = new ArrayList<Character>();
-        for(Character c : this.characters) {
+        for (Character c : this.characters) {
             final Block temp = this.getTile(c.getPosition().getX(), c.getPosition().getY());
-            if (! temp.isTraversable()) {
+            if (!temp.isTraversable()) {
                 tempChars.add(c);
             }
         }
-        for(Character c : tempChars) {
+        for (Character c : tempChars) {
             this.characters.remove(c);
         }
         return tempChars.size() > 0;

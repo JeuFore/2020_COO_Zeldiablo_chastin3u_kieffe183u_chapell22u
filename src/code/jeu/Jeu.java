@@ -14,7 +14,7 @@ public class Jeu {
     private Character j;
     private Map carte;
 
-    private Block actualBlock;
+    private AnimateBlock actualBlock;
 
     /**
      * 
@@ -27,7 +27,7 @@ public class Jeu {
         File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
         this.carte.verify();
-        this.actualBlock = new Empty();
+        this.actualBlock = null;
         // sc.close();
     }
 
@@ -123,39 +123,35 @@ public class Jeu {
 
         Block block = carte.getTile(character.getPosition().getX(), character.getPosition().getY());
 
-        this.actualBlock.changerEtat();
-
-        if(block.getActif()){
-            this.actualBlock = block;
-            this.actualBlock.activer();
-            character.changerVie(block.getDegat());
+        if (block instanceof AnimateBlock) {
+            AnimateBlock animateBlock = ((AnimateBlock) block);
+            if (animateBlock.getAnimate() == 0) {
+                this.actualBlock = animateBlock;
+                animateBlock.activerAnimation();
+                character.changerVie(animateBlock.getLife());
+            } else
+                animateBlock.changeNbAnimation();
         }
 
         /**
-        if (this.explosion != 5)
-            this.explosion++;
-
-        if (carte.getTile(c.getPosition().getX(), c.getPosition().getY()) == 2 && this.explosion == 5) {
-            c.changerVie(-2);
-            System.out.println("Aie le piege... -2 points de vie.");
-            this.explosion = 0;
-
-        } else if (c instanceof NonPlayableCharacter) {
-            System.out.println("Quelqu un d autre a perdu de la vie... Prenez l avantage!");
-        }
-        if ((carte.getTile(c.getPosition().getX(), c.getPosition().getY()) == 3)) {
-            c.changerVie(2);
-            if (c instanceof PlayableCharacter)
-                System.out.println("Tu as trouve une fontaine de soin, +2 points de vie!");
-            else if (c instanceof NonPlayableCharacter) {
-                System.out.println("Attention quelqu un d autre a recupere de la vie ... ");
-            }
-        }
-
-        */
+         * if (this.explosion != 5) this.explosion++;
+         * 
+         * if (carte.getTile(c.getPosition().getX(), c.getPosition().getY()) == 2 &&
+         * this.explosion == 5) { c.changerVie(-2); System.out.println("Aie le piege...
+         * -2 points de vie."); this.explosion = 0;
+         * 
+         * } else if (c instanceof NonPlayableCharacter) { System.out.println("Quelqu un
+         * d autre a perdu de la vie... Prenez l avantage!"); } if
+         * ((carte.getTile(c.getPosition().getX(), c.getPosition().getY()) == 3)) {
+         * c.changerVie(2); if (c instanceof PlayableCharacter) System.out.println("Tu
+         * as trouve une fontaine de soin, +2 points de vie!"); else if (c instanceof
+         * NonPlayableCharacter) { System.out.println("Attention quelqu un d autre a
+         * recupere de la vie ... "); } }
+         * 
+         */
     }
 
-    public Block getActualBlock() {
+    public AnimateBlock getActualBlock() {
         return this.actualBlock;
     }
 
