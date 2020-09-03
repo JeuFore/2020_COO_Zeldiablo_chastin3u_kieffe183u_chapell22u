@@ -25,32 +25,38 @@ public class Graphique implements DessinAbstract {
 
         code.characters.Character joueur = this.jeu.getCharacter();
 
-        // Permet de dessiner le joueur
-        Sprites.dessinerCentre(graphics,
-                joueur.getFacingProperty().getSpriteName() + "_" + joueur.getFacingProperty().getId() + "_"
-                        + (joueur.getFacingProperty().getView() + joueur.getFacingProperty().getIdYaxis()),
-                joueur.getPosition().getX() * 30 + 15, joueur.getPosition().getY() * 30 + 15);
+        // Dessiner le joueur
+        dessinerCharacter(joueur, graphics);
 
-        //  Permet d'afficher tous les blocks du jeu
+        // Permet de dessiner les characters autres que le joueur
+        for (code.characters.Character character : this.jeu.getMap().getCharacters()) {
+            dessinerCharacter(character, graphics);
+        }
+
+        // Permet d'afficher tous les blocks du jeu
         for (int i = 0; i < this.jeu.getMap().getMap().size(); i++) {
             Row r = this.jeu.getMap().getMap().get(i);
             for (int j = 0; j < r.getTiles().size(); j++) {
                 Block block = r.getTile(j);
                 if (block.getVisible()) {
-                    Sprites.dessinerCentre(graphics, block.getNom() + block.getyAxis(), j * 30 + 15,
-                            i * 30 + 15);
+                    Sprites.dessinerCentre(graphics, block.getNom() + block.getyAxis(), j * 30 + 15, i * 30 + 15);
                 }
             }
         }
 
-        // Permet de dessiner les characters autres que le joueur
-        for (code.characters.Character character : this.jeu.getMap().getCharacters()) {
-            Sprites.dessinerCentre(graphics,
-                    character.getFacingProperty().getSpriteName() + "_" + character.getFacingProperty().getId() + "_"
-                            + (character.getFacingProperty().getView() + character.getFacingProperty().getIdYaxis()),
-                    character.getPosition().getX() * 30 + 15, character.getPosition().getY() * 30 + 15);
-        }
-
         graphics.dispose();
+    }
+
+    /**
+     * Methode permettant de dessiner n'importe quel Character
+     * 
+     * @param character
+     * @param graphics
+     */
+    public void dessinerCharacter(code.characters.Character character, Graphics2D graphics) {
+        Sprites.dessinerCentre(graphics,
+                character.getFacingProperty().getSpriteName() + "_" + character.getFacingProperty().getId() + "_"
+                        + (character.getFacingProperty().getView() + character.getFacingProperty().getIdYaxis()),
+                character.getPosition().getX() * 30 + 15, character.getPosition().getY() * 30 + 15);
     }
 }

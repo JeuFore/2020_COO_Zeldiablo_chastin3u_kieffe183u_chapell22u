@@ -2,7 +2,8 @@ package code.jeu;
 
 import java.util.ArrayList;
 
-import code.block.*;
+import code.block.Block;
+import code.block.type.*;
 
 /**
  * Classe représentant une ligne d'une carte d'un niveau

@@ -17,8 +17,9 @@ responsable chastin3u
 
 CRITERES DE VALIDATIONS 
 Les dégats ne se déclenchent que lorsque le joueur arrive sur la case, il peut rester dessus sans perdre de pdv
-Lorsque le piege est activé, la case devient une case normale
+Lorsque le piege est activé, la case devient une case vide
 Gestion graphique du piege dans le labyrinthe
+Ajout du support graphique pour monstre
 
 
 Gestion des attaques des Character

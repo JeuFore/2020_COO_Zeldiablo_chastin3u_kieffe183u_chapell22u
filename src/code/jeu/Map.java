@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import code.block.Block;
-import code.block.Border;
 import code.characters.*;
 import code.characters.Character;
 

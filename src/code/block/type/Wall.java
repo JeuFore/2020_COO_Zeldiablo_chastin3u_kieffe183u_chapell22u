@@ -1,4 +1,6 @@
-package code.block;
+package code.block.type;
+
+import code.block.Block;
 
 public class Wall extends Block {
 
