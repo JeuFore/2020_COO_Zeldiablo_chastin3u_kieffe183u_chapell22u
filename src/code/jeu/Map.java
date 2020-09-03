@@ -184,62 +184,19 @@ public class Map {
      * 
      */
     public void gererAttaque(int x, int y, Character c) {
-    	int fp = c.getFacingProperty().getView();
-    	Position p = new Position(x,y);
-    	switch(fp) {
-    	case 3:
     		for (int i = 0 ; i < characters.size(); i++) {
-        		if(etreACote(0,1,c,i)) {
+        		if(etreACote(0,1,c,i) || etreACote(1,0,c,i) || etreACote(0,-1,c,i) || etreACote(-1,0,c,i)) {
         			characters.get(i).subirDegat(c.getDmg());
+        			System.out.println("NTM");
         			}
         		if(characters.get(i) instanceof Wizard) {
-        			if(etreACote(0,2,c,i)) {
+        			if(etreACote(0,2,c,i) || etreACote(2,0,c,i) || etreACote(0,-2,c,i) || etreACote(-2,0,c,i)) {
             			characters.get(i).subirDegat(c.getDmg());
             			((Wizard)characters.get(i)).changerMana(-1);
         				}
         			}
     			}
-    		break;
-    	case 2:
-    		for (int i = 0 ; i < characters.size(); i++) {
-        		if(etreACote(1,0,c,i)) {
-        			characters.get(i).subirDegat(c.getDmg());
-        			}
-        		if(characters.get(i) instanceof Wizard) {
-        			if(etreACote(2,0,c,i)) {
-        				characters.get(i).subirDegat(c.getDmg());
-            			((Wizard)characters.get(i)).changerMana(-1);
-        				}
-        			}	
-    			}
-        		break;
-        case 0:
-        	for (int i = 0 ; i < characters.size(); i++) {
-        		if(etreACote(0,-1,c,i)) {
-        			characters.get(i).subirDegat(c.getDmg());
-        			}
-        		if(characters.get(i) instanceof Wizard) {
-        			if(etreACote(0,-2,c,i)) {
-        				characters.get(i).subirDegat(c.getDmg());
-            			((Wizard)characters.get(i)).changerMana(-1);
-        				}
-        			}
-    			}
-        	break;
-        case 1:
-        	for (int i = 0 ; i < characters.size(); i++) {
-        		if(etreACote(-1,0,c,i)) {
-        			characters.get(i).subirDegat(c.getDmg());
-        			}
-        	if(characters.get(i) instanceof Wizard) {
-    			if(etreACote(-2,0,c,i)) {
-    				characters.get(i).subirDegat(c.getDmg());
-        			((Wizard)characters.get(i)).changerMana(-1);
-    				}
-    			}
     		}
-    	}
-    }
     
     public boolean etreACote(int fpX, int fpY, Character c, int indice) {
     	boolean res = false;

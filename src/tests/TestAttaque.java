@@ -29,7 +29,6 @@ public class TestAttaque {
 		Map m = new Map(f);
 		m.getCharacters().add(new Advanturer("Jacques", 10, 0, 0));
 		m.getCharacters().add(new Monster("TANK", 10, 1, 0));
-		m.getCharacters().get(0).setFacingView(2);
 		m.gererAttaque(m.getCharacters().get(0).getPosition().getX(), m.getCharacters().get(0).getPosition().getY(), m.getCharacters().get(0));
 		assertEquals("Le monstre devrait avoir perdu des points de vies",6 ,m.getCharacters().get(1).getVie());
 	}
