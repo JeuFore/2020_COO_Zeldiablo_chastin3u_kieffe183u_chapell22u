@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import code.block.Block;
+import code.characters.Character;
 
 /**
  * Classe représentant une carte d'un niveau
@@ -160,12 +161,12 @@ public class Map {
     }
 
     /**
-     * Méthode qui vérifie si tous les personnages ne sont pas dans les murs. Si oui, renvoie false et supprime le personnage qui bloque.
-     * @return
+     * Methode qui verifie si tous les personnages ne sont pas dans les murs. Si oui, renvoie false et supprime le personnage qui bloque.
+     * @return true si tous les monstres sont bien placés
      */
     public boolean verify() {
         for(Character c : this.characters) {
-            final int temp = ;
+            final Block temp = this.getTile(c.getPosition().getX(), c.getPosition().getY());
         }
     }
 
