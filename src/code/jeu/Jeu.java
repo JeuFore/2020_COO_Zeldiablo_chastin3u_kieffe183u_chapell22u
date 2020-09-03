@@ -48,10 +48,10 @@ public class Jeu {
      */
 
     public void commande(code.moteurJeu.moteur.CClavier clavier) {
-        if (j instanceof PlayableCharacter) {
+       if (j instanceof PlayableCharacter) {
 
             if (clavier.isPressed(83)) {
-                gererCollision(j.getPosition().getX(), j.getPosition().getY() - 1);
+                gererCollision(j.getPosition().getX(), j.getPosition().getY() + 1);
                 j.move(0, 1);
                 j.setFacingView(FacingProperty.FACING_DOWN);
             }
@@ -61,7 +61,7 @@ public class Jeu {
                 j.setFacingView(FacingProperty.FACING_LEFT);
             }
             if (clavier.isPressed(90)) {
-                gererCollision(j.getPosition().getX(), j.getPosition().getY() + 1);
+                gererCollision(j.getPosition().getX(), j.getPosition().getY() - 1);
                 j.move(0, -1);
                 j.setFacingView(FacingProperty.FACING_UP);
             }
