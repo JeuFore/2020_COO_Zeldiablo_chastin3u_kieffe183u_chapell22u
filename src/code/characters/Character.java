@@ -145,6 +145,13 @@ public abstract class Character {
     public void setFacingView(int v) {
         this.facingProperty.setView(v);
     }
+    
+    /**
+     * Methode qui permet au character d'attaquer
+     * 
+     */
+    
+    public abstract void attaquer();
 
     /**
      * Méthode toString

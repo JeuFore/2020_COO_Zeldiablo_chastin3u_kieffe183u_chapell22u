@@ -6,6 +6,10 @@ public class FacingProperty {
     private String spriteName;
     private int idXaxis;
     private int idYaxis;
+    public final static int FACING_UP = 3;
+    public final static int FACING_RIGHT = 2;
+    public final static int FACING_LEFT = 1;
+    public final static int FACING_DOWN = 0;
 
     public FacingProperty(String n, int x, int y) {
         this.view = 7;
