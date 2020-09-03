@@ -187,14 +187,15 @@ public class Map {
     		for (int i = 0 ; i < characters.size(); i++) {
         		if(c instanceof Wizard) {
         			if(etreACote(0,2,c,i) || etreACote(2,0,c,i) || etreACote(0,-2,c,i) || etreACote(-2,0,c,i)) {
-            			characters.get(i).subirDegat(c.getDmg());
-            			((Wizard)c).changerMana(-1);
-            			System.out.println("NTMagie");
+            			if(((Wizard)c).getMana() > 0) {
+            				characters.get(i).subirDegat(c.getDmg());
+            				((Wizard)c).changerMana(-1);
+            				System.out.println(((Wizard)c).getMana());
+            				}
         				}
         			} else {
         		if(etreACote(0,1,c,i) || etreACote(1,0,c,i) || etreACote(0,-1,c,i) || etreACote(-1,0,c,i)) {
         			characters.get(i).subirDegat(c.getDmg());
-        			System.out.println("NTM");
         			}
         		}
    			}
