@@ -185,18 +185,20 @@ public class Map {
      */
     public void gererAttaque(int x, int y, Character c) {
     		for (int i = 0 ; i < characters.size(); i++) {
+        		if(c instanceof Wizard) {
+        			if(etreACote(0,2,c,i) || etreACote(2,0,c,i) || etreACote(0,-2,c,i) || etreACote(-2,0,c,i)) {
+            			characters.get(i).subirDegat(c.getDmg());
+            			((Wizard)c).changerMana(-1);
+            			System.out.println("NTMagie");
+        				}
+        			} else {
         		if(etreACote(0,1,c,i) || etreACote(1,0,c,i) || etreACote(0,-1,c,i) || etreACote(-1,0,c,i)) {
         			characters.get(i).subirDegat(c.getDmg());
         			System.out.println("NTM");
         			}
-        		if(characters.get(i) instanceof Wizard) {
-        			if(etreACote(0,2,c,i) || etreACote(2,0,c,i) || etreACote(0,-2,c,i) || etreACote(-2,0,c,i)) {
-            			characters.get(i).subirDegat(c.getDmg());
-            			((Wizard)characters.get(i)).changerMana(-1);
-        				}
-        			}
-    			}
-    		}
+        		}
+   			}
+    	}
     
     public boolean etreACote(int fpX, int fpY, Character c, int indice) {
     	boolean res = false;

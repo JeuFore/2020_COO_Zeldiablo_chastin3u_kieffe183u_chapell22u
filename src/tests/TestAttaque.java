@@ -2,49 +2,42 @@ package tests;
 
 import org.junit.Test;
 
-import code.jeu.Jeu;
 import code.characters.*;
+import code.characters.Character;
 import code.jeu.*;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-
 public class TestAttaque {
 	
-	/**
-     * Methode qui retourne le fichier correspondant au path donnees (probleme de path avec les tests)
-     * @param path
-     * @return le Fichier correspondant
-     */
-    private File getFile(String path) {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource(path).getFile());
-        return file;
-    }
 	
 	@Test
 	public void testAttaqueAdventurer() {
-		File f = getFile("tests/map/level_1.txt");
-		Advanturer j = new Advanturer("Bruno",10,0,0);
-		Jeu jeu = new Jeu(f,j);
-		jeu.getMap().getCharacters().add(new Monster("Robert",10,1,0));
-		jeu.getMap().gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
-		assertEquals("Le monstre devrait avoir perdu des points de vie", 6, jeu.getMap().getCharacters().get(1).getVie());
+		Map m = new Map("tests/map/level_5.txt");
+		Character j = new Advanturer("Bruno", 10, 3, 2);
+		Character grr = new Monster("Pastique", 10, 3, 3);
+		m.ajouterCharacter(j);
+		m.ajouterCharacter(grr);
+		System.out.println(m.getCharacters().get(0));
+		System.out.println(m.getCharacters().get(1));
+		System.out.println(m.getCharacters().get(0).getPosition().getX());
+		System.out.println(m.getCharacters().get(0).getPosition().getY());
+		System.out.println(m.getCharacters().get(1).getPosition().getX());
+		System.out.println(m.getCharacters().get(1).getPosition().getY());
+		m.gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
+		assertEquals("Le monstre devrait avoir perdu de la vie", 6,grr.getVie());
 	}
 	
 	@Test
 	public void testAttaqueMage() {
-		File f = getFile("tests/map/level_1.txt");
-		Map m = new Map(f);
-		Wizard j = new Wizard("Paul", 10, 0, 0, 10);
-		Monster grr = new Monster("TANK", 10, 2, 0);
-		j.setFacingView(2);
-		m.getCharacters().add(j);
-		m.getCharacters().add(grr);
+		Map m = new Map("tests/map/level_5.txt");
+		Wizard j = new Wizard("Paul", 10, 3, 2, 10);
+		Monster grr = new Monster("TANK", 10,3, 4);
+		m.ajouterCharacter(j);
+		m.ajouterCharacter(grr);
 		m.gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
-		assertEquals("Le monstre devrait avoir perdu des points de vies",6 ,m.getCharacters().get(1).getVie());
-		assertEquals("Le mage doit avoir perdu du mana", 9,((Wizard)m.getCharacters().get(0)).getMana());
+		assertEquals("Le monstre devrait avoir perdu des points de vies",6 ,grr.getVie());
+		assertEquals("Le mage doit avoir perdu du mana", 9,j.getMana());
 	}
 	
 	
