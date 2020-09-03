@@ -1,11 +1,15 @@
 package code.moteurJeu.moteur;
 
+import code.moteurJeu.FrameListenerUpdater;
+
 /**
  * classe MoteurGraphique represente un moteur de jeu generique.
  * 
  * On lui passe un jeu et un afficheur et il permet d'executer un jeu.
  */
 public class MoteurGraphique {
+
+	public static long frame = 0L;
 
 	/**
 	 * le jeu a executer
@@ -25,15 +29,17 @@ public class MoteurGraphique {
 	/**
 	 * construit un moteur
 	 * 
-	 * @param pJeu
-	 *            jeu a lancer
-	 * @param pAffiche
-	 *            afficheur a utiliser
+	 * @param pJeu     jeu a lancer
+	 * @param pAffiche afficheur a utiliser
 	 */
 	public MoteurGraphique(JeuAbstract pJeu, DessinAbstract pAffiche) {
 		// creation du jeu
 		this.jeu = pJeu;
 		this.dessin = pAffiche;
+	}
+
+	public static long getFrame() {
+		return frame;
 	}
 
 	/**
@@ -101,6 +107,8 @@ public class MoteurGraphique {
 
 			beforeTime = System.nanoTime();
 			nbIteration++;
+			FrameListenerUpdater.call();
+			frame++;
 		}
 
 		long l2 = System.currentTimeMillis();

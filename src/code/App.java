@@ -5,6 +5,12 @@ import code.moteurJeu.sprite.Sprites;
 import code.moteurJeu.*;
 
 import code.jeu.Jeu;
+import code.jeu.Map;
+
+import java.util.ArrayList;
+
+import code.characters.*;
+import code.characters.Character;
 
 public class App {
 
@@ -20,6 +26,14 @@ public class App {
 
         Jeu jeu = new Jeu();
 
+        Map map = jeu.getMap();
+        ArrayList<Character> characters = map.getCharacters();
+        for (Character c : characters) {
+            if (c instanceof NonPlayableCharacter) {
+                FrameListenerUpdater.addListener((NonPlayableCharacter)c);
+            }
+        }
+
         Graphique graphique = new Graphique(jeu);
         JeuControleur jeuControleur = new JeuControleur(jeu);
 
@@ -27,5 +41,6 @@ public class App {
 
         Audio.play("src/audio/theme.wav");
         m.lancerJeu(900, 900, 10);
+        
     }
 }
