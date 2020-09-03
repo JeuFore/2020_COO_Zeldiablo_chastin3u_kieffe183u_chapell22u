@@ -26,6 +26,7 @@ public class Jeu {
         this.j = new Wizard("Bob", 10, 1, 1, 10);
         File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
+        this.carte.verify();
         this.actualBlock = new Empty();
         // sc.close();
     }
@@ -38,6 +39,7 @@ public class Jeu {
     public Jeu(File file, Character joueur) {
         this.j = joueur;
         this.carte = new Map(file);
+        this.carte.verify();
     }
 
     /**
