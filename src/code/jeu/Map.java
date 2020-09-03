@@ -129,7 +129,7 @@ public class Map {
             Row row = this.map.get(y);
             return row.getTile(x);
         } else {
-            return new Border();
+            return Block.border;
         }
     }
 

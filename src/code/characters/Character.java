@@ -35,7 +35,7 @@ public abstract class Character {
      */
     private int dmg;
 
-    private boolean stone;
+    private boolean stun;
 
     /**
      * Construit un Personnage
@@ -52,7 +52,7 @@ public abstract class Character {
         this.position = new Position(x, y);
         this.facingProperty = facingProperty;
         this.dmg = d;
-        this.stone = false;
+        this.stun = false;
     }
 
     /**
@@ -61,7 +61,7 @@ public abstract class Character {
      * @param y déplacement en y
      */
     public void move(int x, int y) {
-        if (!collision && !stone) {
+        if (!collision && !stun) {
             this.position.changerX(x);
             this.position.changerY(y);
         }
@@ -75,8 +75,8 @@ public abstract class Character {
         return position;
     }
 
-    public void setStone(boolean stone) {
-        this.stone = stone;
+    public void setStun(boolean stun) {
+        this.stun = stun;
     }
 
     /**

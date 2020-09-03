@@ -129,7 +129,7 @@ public class Jeu {
                 this.actualBlock = animateBlock;
                 character.changerVie(animateBlock.getLife());
                 if (animateBlock instanceof Trap)
-                    character.setStone(((Trap) animateBlock).getStone());
+                    character.setStun(((Trap) animateBlock).getStun());
             }
         }
 
@@ -137,7 +137,7 @@ public class Jeu {
             if (this.actualBlock.getVisible())
                 this.actualBlock.changeNbAnimation();
             else if (!this.actualBlock.getActif())
-                character.setStone(false);
+                character.setStun(false);
     }
 
     public AnimateBlock getActualBlock() {
