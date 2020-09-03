@@ -26,7 +26,7 @@ public class Jeu implements FrameListener {
 
     public Jeu() {
         // Scanner sc = new Scanner(System.in);
-        this.j = new Advanturer("Bob", 10, 1,1);
+        this.j = new Wizard("Bob", 10, 1,1, 10);
         File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
         this.carte.verify();
@@ -53,8 +53,8 @@ public class Jeu implements FrameListener {
     /**
      * 
      * Methode de commande lorsque l'on appuie sur les touches du clavier
-     */
-
+     */       	
+        
     public void commande(Character c, MovingProperty movingProperty) {
         if (movingProperty.canMove(FacingProperty.FACING_DOWN)) {
             this.move(0, 1, FacingProperty.FACING_DOWN, (c == null) ? j : c);
@@ -153,7 +153,7 @@ public class Jeu implements FrameListener {
         for(Character c: chars) {
             if (c instanceof NonPlayableCharacter) {
                 NonPlayableCharacter npc = (NonPlayableCharacter) c;
-                if (MoteurGraphique.getFrame() % 10 == 0) {
+                if (MoteurGraphique.getFrame() % 5 == 0) {
                     final int rand = (int)Math.floor(Math.random() * 4);
                     this.commande(npc, new MovingSimple(rand));
                 }

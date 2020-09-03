@@ -1,0 +1,90 @@
+@startuml
+
+title Map et Character 
+
+Map "*" --> "*" Character : -characters<ArrayList>
+
+class Map {
+    - map: ArrayList<Row>
+    + Map(String)
+    + Map(File)
+    + getMap() : ArrayList<Row>
+    + isInBounds(int, int) : boolean
+    + getTile(int, int): int
+    + {static} load(File): ArrayList<Row>
+    - {static} convertLinesToMap(String[]): ArrayList<Row>
+    + ajouterCharacter(Character) : void
+    + supprimerCharacter(Character) : void
+    + setCharacter(ArrayList<Character>) : void
+    + gererAttaque(int,int,Character) : void
+    + etreACote(int,int,c,int) : void
+    + verify() : boolean
+}
+
+Map "0" --> "1" Row : - ArrayList<Row>
+
+class Row {
+    - tiles: ArrayList<Integer>
+    + Row(ArrayList<Integer>)
+    + Row()
+    + getTile(int): int
+    + addTile(int): void
+    + removeTile(): void
+} 
+
+Character "1" --> "1" Position : - position
+
+abstract class Character {
+    - nom: String
+    - vie: int
+    - collision: boolean
+    - facingProperty: FacingProperty
+    - dmg : int
+    - stun : boolean
+    + Character(String, int, int, int,FacingProperty,int)
+    + getVie(): int
+    + isCollision(): boolean
+    + getNom(): String
+    + getPosition(): Position
+    + setPosition(Position): void
+    + setVie(int): void 
+    + setStun(boolean) : void
+    + move(int, int): void
+    + changerVie(int n): void
+    + bloquer(boolean): void
+    + setFacingView(int): void
+    + getFacingProperty() : FacingProperty
+    + toString(): String
+    + subirDegat(int) : void
+    + getDmg() : int
+    + setDmg(int) : void
+}
+
+class Position {
+    + Position()
+    + Position(int, int)
+    - x: int
+    - y: int
+    + getX(): int
+    + getY(): int
+    + changerX(int): void
+    + changerY(int): void
+}
+
+interface MagicPower {
+    + changerMana(int) : void
+    + setMana(int): void
+    + getMana(): int
+}
+
+class Advanturer extends PlayableCharacter {
+    + Advanturer(String, int, int, int)
+}
+class Wizard extends PlayableCharacter implements MagicPower {
+    - mana: int
+    + Wizard(String, int, int, int, int)
+    + toString(): String
+}
+
+@enduml
+
