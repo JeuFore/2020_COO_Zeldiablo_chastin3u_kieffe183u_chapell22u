@@ -83,13 +83,12 @@ public class Jeu {
      * 
      */
     public void gererCollision(int x, int y) {
-        String[] tab = { "-1", "1" };
         if (!carte.isInBounds(x, y)) {
             j.bloquer(true);
         } else {
             j.bloquer(false);
         }
-        if (Arrays.stream(tab).anyMatch(("" + carte.getTile(x, y).getId())::equals)) {
+        if (!carte.getTile(x, y).isTraversable()) {
             j.bloquer(true);
         } else {
             j.bloquer(false);
