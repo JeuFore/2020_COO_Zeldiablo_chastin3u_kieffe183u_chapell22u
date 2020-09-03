@@ -70,6 +70,9 @@ public class Jeu {
                 j.move(1, 0);
                 j.setFacingView(FacingProperty.FACING_RIGHT);
             }
+            if (clavier.isPressed(32)) {
+            	carte.gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
+            }
         } else if (j instanceof NonPlayableCharacter) {
 
         }
