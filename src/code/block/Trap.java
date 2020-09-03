@@ -3,7 +3,7 @@ package code.block;
 public class Trap extends Block {
 
     public Trap() {
-        super("trap", 2, 2);
+        super("trap", 2, 2, true);
     }
     
 }

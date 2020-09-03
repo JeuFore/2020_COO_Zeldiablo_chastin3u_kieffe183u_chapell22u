@@ -54,16 +54,16 @@ public class Row {
         Block temp = null;
         switch (tile) {
             case 0:
-                temp = Block.vide;
+                temp = new Empty();
                 break;
             case 1:
-                temp = Block.wall;
+                temp = new Wall();
                 break;
             case 2:
-                temp = Block.trap;
+                temp = new Trap();
                 break;
             case 3:
-                temp = Block.fire;
+                temp = new Fire();
                 break;
             default:
                 break;

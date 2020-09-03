@@ -12,12 +12,23 @@ public abstract class Block {
 
     private boolean actif;
 
-    public Block(String nom, int degat, int id) {
+    private boolean traversable;
+
+    public Block(String nom, int degat, int id, boolean traversable) {
         this.nom = nom;
         this.degat = degat;
         this.etat = 0;
         this.id = id;
         this.actif = false;
+        this.traversable = true;
+    }
+
+    public boolean isTraversable() {
+        return this.traversable;
+    }
+
+    public void setTraversable(boolean traversable) {
+        this.traversable = traversable;
     }
 
     public int getId() {

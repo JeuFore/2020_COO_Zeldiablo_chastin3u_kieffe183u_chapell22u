@@ -165,9 +165,17 @@ public class Map {
      * @return true si tous les monstres sont bien placés
      */
     public boolean verify() {
+        ArrayList<Character> tempChars = new ArrayList<Character>();
         for(Character c : this.characters) {
             final Block temp = this.getTile(c.getPosition().getX(), c.getPosition().getY());
+            if (! temp.isTraversable()) {
+                tempChars.add(c);
+            }
         }
+        for(Character c : tempChars) {
+            this.characters.remove(c);
+        }
+        return tempChars.size() > 0;
     }
 
 }
