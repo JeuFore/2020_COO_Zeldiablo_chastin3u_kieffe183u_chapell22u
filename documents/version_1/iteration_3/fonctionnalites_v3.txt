@@ -1,0 +1,30 @@
+Déplacement des monstres
+responstable : chapell22u
+
+CRITERES DE VALIDATIONS 
+* A chaque évolution du jeu, que le joueur se déplace ou non, les monstres se déplacent.
+• Les monstres sont bloqués par les obstacles. S'ils ont choisi de se diriger vers un obstacle (mur, joueur, ...),
+leur mouvement est alors annulé (sauf s'il s'agit de fantômes).
+• Deux monstres ou un monstre et un joueur ne peuvent pas se trouver sur la même case (Si la tache Collision entre monstre
+est fonctionnelle).
+• Achaque évolution, tous les monstres tentent de se déplacer.
+•L'interface graphique se met à jour en fonction des déplacements des Monstres.
+
+TESTS : 
+
+GESTION DES PIEGES 
+responsable chastin3u
+
+CRITERES DE VALIDATIONS 
+Les dégats ne se déclenchent que lorsque le joueur arrive sur la case, il peut rester dessus sans perdre de pdv
+Lorsque le piege est activé, la case devient une case normale
+Gestion graphique du piege dans le labyrinthe
+
+
+Gestion des attaques des Character
+Tout les characters peuvent attaquer 
+Les attaques sont différentes selon les classes des characters
+Un character qui subit une attaque perd de la vie.
+
+TESTS :
+
