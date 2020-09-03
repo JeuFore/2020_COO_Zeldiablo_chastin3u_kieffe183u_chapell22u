@@ -1,4 +1,6 @@
-package code.block;
+package code.block.type;
+
+import code.block.Trap;
 
 public class Fire extends Trap {
 

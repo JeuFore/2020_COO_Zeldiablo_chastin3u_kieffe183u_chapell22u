@@ -18,12 +18,6 @@ public class TestAttaque {
 		Character grr = new Monster("Pastique", 10, 3, 3);
 		m.ajouterCharacter(j);
 		m.ajouterCharacter(grr);
-		System.out.println(m.getCharacters().get(0));
-		System.out.println(m.getCharacters().get(1));
-		System.out.println(m.getCharacters().get(0).getPosition().getX());
-		System.out.println(m.getCharacters().get(0).getPosition().getY());
-		System.out.println(m.getCharacters().get(1).getPosition().getX());
-		System.out.println(m.getCharacters().get(1).getPosition().getY());
 		m.gererAttaque(j.getPosition().getX(), j.getPosition().getY(), j);
 		assertEquals("Le monstre devrait avoir perdu de la vie", 6,grr.getVie());
 	}

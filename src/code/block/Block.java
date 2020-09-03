@@ -1,5 +1,7 @@
 package code.block;
 
+import code.block.type.Border;
+
 public abstract class Block {
 
     // Nom du block correspond au nom du sprite

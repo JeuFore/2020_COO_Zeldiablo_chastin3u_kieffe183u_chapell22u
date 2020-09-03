@@ -1,4 +1,6 @@
-package code.block;
+package code.block.type;
+
+import code.block.AnimateBlock;
 
 public class Heal extends AnimateBlock {
 

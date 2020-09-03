@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import code.block.Block;
-import code.block.Empty;
-import code.block.Wall;
+import code.block.type.*;
 import code.jeu.Row;
 
 public class TestRow {
