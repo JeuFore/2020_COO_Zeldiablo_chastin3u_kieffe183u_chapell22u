@@ -32,7 +32,7 @@ package block{
         + getLife() : int
         + getActif() : boolean
     }
-    abstratc class Block {
+    abstract class Block {
         - nom : String
         - visible : boolean
         - id : int 
