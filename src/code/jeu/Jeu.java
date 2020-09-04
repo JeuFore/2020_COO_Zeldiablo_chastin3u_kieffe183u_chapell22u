@@ -26,7 +26,7 @@ public class Jeu implements FrameListener {
 
     public Jeu() {
         // Scanner sc = new Scanner(System.in);
-        this.j = new Wizard("Bob", 10, 1,1, 10);
+        this.j = new Advanturer("Bob", 10, 1,1);
         File file = new File("src/map/level_3.txt");
         this.carte = new Map(file);
         this.carte.verify();
@@ -53,7 +53,7 @@ public class Jeu implements FrameListener {
     /**
      * 
      * Methode de commande lorsque l'on appuie sur les touches du clavier
-     */       	
+     */				       	
         
     public void commande(Character c, MovingProperty movingProperty) {
         if (movingProperty.canMove(FacingProperty.FACING_DOWN)) {
