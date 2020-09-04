@@ -228,7 +228,7 @@ public class Map {
         for (Character c : tempChars) {
             this.characters.remove(c);
         }
-        return tempChars.size() > 0;
+        return tempChars.size() == 0;
     }
 
 }
