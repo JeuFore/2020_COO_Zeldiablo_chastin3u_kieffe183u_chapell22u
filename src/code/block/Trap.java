@@ -14,7 +14,7 @@ public class Trap extends AnimateBlock {
      * @param stun Permet de savoir si un block etourdit le joueur 
      */
     public Trap(String nom, int id, int nbAnimation, int life, boolean traversable, boolean stun) {
-        super(nom, id, nbAnimation, life, traversable);
+        super(nom, id, nbAnimation, life, traversable, false);
         this.stun = stun;
     }
 

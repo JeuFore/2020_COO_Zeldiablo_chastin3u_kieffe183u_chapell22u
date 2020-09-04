@@ -18,11 +18,15 @@ public class App {
 
         Sprites.chargerFeuille("PlayableCharacter", "./documents/images/vf_actor1-5110ef5.png", 12, 8);
 
-        Sprites.chargerFeuille("NonPlayableCharacter", "./documents/images/tank_tiles.png", 22, 12);
+        Sprites.chargerFeuille("NonPlayableCharacter", "./documents/images/monster.png", 12, 8);
 
         Sprites.chargerFeuille("tank", "./documents/images/tank_tiles.png", 22, 12);
 
-        Sprites.chargerFeuille("beartrap", "./documents/images/beartrap.png", 5, 1);
+        Sprites.chargerFeuille("beartrap", "./documents/images/beartrap.png", 1, 10);
+
+        Sprites.chargerFeuille("fire", "./documents/images/fire.png", 1, 19);
+
+        Sprites.chargerFeuille("heal", "./documents/images/heal.png", 1, 10);
 
         Jeu jeu = new Jeu();
 

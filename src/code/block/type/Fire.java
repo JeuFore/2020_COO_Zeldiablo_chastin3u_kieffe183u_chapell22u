@@ -8,6 +8,6 @@ public class Fire extends Trap {
      * Construit un block feu
      */
     public Fire() {
-        super("tank_20_", 4, 12, -2, true, false);
+        super("fire_0_", 4, 19, -2, true, true);
     }
 }
