@@ -229,6 +229,7 @@ public class Map {
             this.characters.remove(c);
         }
         return tempChars.size() > 0;
+        
     }
 
 }

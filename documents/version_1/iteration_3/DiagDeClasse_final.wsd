@@ -1,0 +1,203 @@
+@startuml
+
+package block{
+    package type{
+        class BearTrap extends Trap {
+            +BearTrap()
+        }
+        class Border extends Block{
+            +Border()
+        }
+        class Empty extends Block {
+            +Empty()
+        }
+        class Fire extends Trap {
+            +Fire()
+        }
+        class Heal extends AnimateBlock {
+            +Heal()
+        }
+        class Wall extends Block {
+            +Wall()
+        }
+    }
+    class AnimateBlock extends Block {
+        - animation : int 
+        - nbAnimation : int
+        - life : int 
+        - actif : boolean
+        + AnimateBlock(String,int,int,int,boolean,boolean)
+        + changeNbAnimation() : void 
+        + activerAnimation() : void
+        + getLife() : int
+        + getActif() : boolean
+    }
+    abstratc class Block {
+        - nom : String
+        - visible : boolean
+        - id : int 
+        - traversable : boolean
+        - yAxis : int 
+        {static} + border : Block = new Border()
+        + isTraversable() : boolean
+        + setTraversable(boolean) : void
+        + getId() : int
+        + setVisible(boolean) : void
+        + setyAxis(int) : void
+        + getVisible() : boolean
+        + getyAxis() : int
+        + toString() : String
+    }
+    class Trap extends AnimateBlock {
+        + Trap(String,int,int,int,boolean,boolean)
+        + getStun() : boolean
+    }
+}
+
+package characters{
+    class Position{
+        - x : int
+        - y : int 
+        + Position(int,int)
+        + Position()
+        + getY() : int
+        + setY(int) : void
+        + getX() : int
+        + setX(int) : void
+        + changerX(int) : void
+        + changerY(int) : void
+    }
+    interface Playable {
+        + setXP(int) : void
+        + changerXP(int) : void
+        + getXP() : int
+    }
+
+    abstract class Character {
+    - nom: String
+    - vie: int
+    - collision: boolean
+    - facingProperty: FacingProperty
+    - dmg : int
+    - stun : boolean
+    - position : Position
+    + Character(String, int, int, int,FacingProperty,int)
+    + getVie(): int
+    + isCollision(): boolean
+    + getNom(): String
+    + getPosition(): Position
+    + setPosition(Position): void
+    + setVie(int): void 
+    + setStun(boolean) : void
+    + move(int, int): void
+    + changerVie(int n): void
+    + bloquer(boolean): void
+    + setFacingView(int): void
+    + getFacingProperty() : FacingProperty
+    + toString(): String
+    + subirDegat(int) : void
+    + getDmg() : int
+    + setDmg(int) : void
+    }
+    abstract class NonPlayableCharacter extends Character {
+        + NonPlayableCharacter(String,int,int,int,FacingProperty,int)
+    }
+    class PlayableCharacter extends Character implements PLayable {
+        - xp : int
+        + PlayableCharacter(String,int,int,int,FacingProperty,int)
+        + setXP(int) : void
+        + changerXP(int) : void
+        + getXP() : int 
+    }
+    class Advanturer extends PlayableCharacter {
+        + Advanturer(String,int,int,int)
+    }
+    interface MagicPower {
+        + changerMana(int) : void
+        + setMana(int) : void
+        + getMana();
+    }
+    class Wizard extends PlayableCharacter implements MagicPower {
+        - mana : int
+        + Wizard(String,int,int,int,int)
+        + changerMana(int) : void
+        + setMana(int) : void
+        + getMana() : int
+        + toString() : String
+    }
+}
+package jeu {
+    interface MovingProperty {
+        + canMove(int) : boolean
+    }
+    class MovingKeyboard implements MovingProperty {
+        {static} - UP : int = 90
+        {static} - RIGHT : int = 68
+        {static} - DOWN : int = 83
+        {static} - LEFT : int = 81
+        - clavier : CClavier
+        + MovingKeyboard(CClavier)
+        + canMove(int) : boolean
+    }
+    class MovingSimple implements MovingProperty {
+        - int : DIR
+        + MovingSimple(int)
+        + canMove(int) : boolean
+
+    }
+    Row "1" --> "*" Block : -tiles
+    class Row {
+        + Row(ArrayList<Block>)
+        + Rown()
+        + getTile(int) : Block
+        + getTiles() : ArrayList<Block>
+        + addTile(int) : void
+        + removeTile() : void
+    }
+    Map "1" --> "*" Row : -map
+    Map "*" --> "*" Character : characters
+    class Map {
+        + Map(String)
+        + Map(File)
+        + getCharacters() : ArrayList<Character>
+        + ajouterCharacter(Character) : void
+        + supprimerCharacter(int) : void
+        + setCharacters(ArrayList<Character>) : void
+        + getMap : ArrayList<Row>
+        + isInBounds(int,int) : boolean
+        + getTile(int,int) : Block
+        {static} + load(File) : ArrayList<Row>
+        {static} - convertLinesToMap(String[]) throws NumberFormatException : ArrayList<Row>
+        + gererAttaque(int,int,Character) : void
+        + etreACote(int,int,Character,int) : boolean
+        + verify() : boolean
+    }
+    Jeu "1" --> "1" Character : -j
+    Jeu "1" --> "1" Map : -carte
+    Jeu "1" --> "*" Map : -maps
+    Jeu "1" --> "*" AnimateBlock : -actualBlock
+    Jeu "1" --> "1" CClavier : -clavier 
+    class Jeu implements FrameListener {
+        - fin : boolean
+        + Jeu()
+        + Jeu(File,Character)
+        + setClavier(CClavier) : void
+        + commande(Character,MovingProperty) : void
+        + move(int,int,int,Character) : void
+        + gererCollision(int,int,Character) : void
+        + getCharacter() : Character
+        + getMap() : Map
+        + getFin() : boolean
+        + changerMap() : void
+        
+        + gererDeclencheur(int,int,Character)
+        + getActualBlock() : AnimateBlock
+        + frameUpdate() : void
+    }
+}
+class App {
+    {static} + main(String[]) throws InterruptedException : void
+}
+
+
+@enduml

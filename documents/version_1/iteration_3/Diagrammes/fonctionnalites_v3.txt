@@ -10,7 +10,9 @@ est fonctionnelle).
 • Achaque évolution, tous les monstres tentent de se déplacer.
 •L'interface graphique se met à jour en fonction des déplacements des Monstres.
 
-TESTS : 
+TESTS :
+Verification lors du lancement du jeu, les monstres se deplacent bien aléatoirement
+et ne se prenne pas les murs
 
 GESTION DES PIEGES 
 responsable chastin3u
@@ -21,11 +23,17 @@ Lorsque le piege est activé, la case devient une case vide
 Gestion graphique du piege dans le labyrinthe
 Ajout du support graphique pour monstre
 
+TESTS : 
+Vérifier que lorsq'un personnage joueur march sur un piège il le déclenche 
+Le piege disparait après et devient une case vide.
+Le joueur reçoit l'effet du piège
 
-Gestion des attaques des Character
+GESTION DES ATTAQUES DES CHARACTERS
+responsable kieffe183u
 Tout les characters peuvent attaquer 
 Les attaques sont différentes selon les classes des characters
 Un character qui subit une attaque perd de la vie.
 
 TESTS :
-
+Les attaques passent bien par rapport au type du character ainsi 
+que les effets que l'attaque applique (perte de point de vie, perte de mana)

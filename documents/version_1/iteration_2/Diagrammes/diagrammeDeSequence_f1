@@ -12,11 +12,4 @@ Joueur --> Jeu : void
 Jeu --> Main : "Tu as trouve une fontaine de soin, +2 points de vie!"
 
 
-
-
-
-
-
-
-
 @enduml

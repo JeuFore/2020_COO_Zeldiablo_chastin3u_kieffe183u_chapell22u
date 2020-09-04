@@ -2,7 +2,7 @@
 
 Jeu -> Map : gererAttaque(j.getPosition(),j.getPosition(),j)
 Map -> Character : getX(),getY()
-Character --> Map : (3,3)
+Character --> Map : (3,3)d
     group pour i de 0 à tout les character dans la liste 
 Map -> Character : instanceof Wizard
 Map <-- Character : true
