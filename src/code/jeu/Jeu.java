@@ -16,8 +16,12 @@ public class Jeu implements FrameListener {
     private Character j;
     private Map carte;
 
+    private ArrayList<Map> maps;
+
     private AnimateBlock actualBlock;
     private CClavier clavier;
+
+    private boolean fin;
 
     /**
      * 
@@ -26,12 +30,18 @@ public class Jeu implements FrameListener {
 
     public Jeu() {
         // Scanner sc = new Scanner(System.in);
-        this.j = new Wizard("Bob", 10, 1,1, 10);
-        File file = new File("src/map/level_1.txt");
-        this.carte = new Map(file);
+        this.j = new Wizard("Bob", 10, 1, 1, 10);
+        File[] files = new File[] { new File("src/map/level_1.txt"), new File("src/map/level_2.txt"),
+                new File("src/map/level_3.txt"), new File("src/map/level_4.txt") };
+        this.maps = new ArrayList<>();
+        for (File file : files) {
+            this.maps.add(new Map(file));
+        }
+        this.carte = this.maps.get(0);
         this.carte.verify();
         this.actualBlock = null;
         this.clavier = new CClavier();
+        this.fin = false;
         // sc.close();
     }
 
@@ -53,8 +63,8 @@ public class Jeu implements FrameListener {
     /**
      * 
      * Methode de commande lorsque l'on appuie sur les touches du clavier
-     */				       	
-        
+     */
+
     public void commande(Character c, MovingProperty movingProperty) {
         if (movingProperty.canMove(FacingProperty.FACING_DOWN)) {
             this.move(0, 1, FacingProperty.FACING_DOWN, (c == null) ? j : c);
@@ -89,9 +99,9 @@ public class Jeu implements FrameListener {
      */
     public void gererCollision(int x, int y, Character c) {
         if (c == null) {
-            j.bloquer((! carte.isInBounds(x, y)) || (!carte.getTile(x, y).isTraversable()));
+            j.bloquer((!carte.isInBounds(x, y)) || (!carte.getTile(x, y).isTraversable()));
         } else {
-            c.bloquer((! carte.isInBounds(x, y)) || (!carte.getTile(x, y).isTraversable()));
+            c.bloquer((!carte.isInBounds(x, y)) || (!carte.getTile(x, y).isTraversable()));
         }
     }
 
@@ -122,22 +132,26 @@ public class Jeu implements FrameListener {
 
         Block block = carte.getTile(character.getPosition().getX(), character.getPosition().getY());
 
-        if (block instanceof AnimateBlock) {
-            AnimateBlock animateBlock = ((AnimateBlock) block);
-            if (animateBlock.getActif()) {
-                animateBlock.activerAnimation();
-                this.actualBlock = animateBlock;
-                character.changerVie(animateBlock.getLife());
-                if (animateBlock instanceof Trap)
-                    character.setStun(((Trap) animateBlock).getStun());
+        if (block.getId() == 5)
+            this.changerMap();
+        else {
+            if (block instanceof AnimateBlock) {
+                AnimateBlock animateBlock = ((AnimateBlock) block);
+                if (animateBlock.getActif()) {
+                    animateBlock.activerAnimation();
+                    this.actualBlock = animateBlock;
+                    character.changerVie(animateBlock.getLife());
+                    if (animateBlock instanceof Trap)
+                        character.setStun(((Trap) animateBlock).getStun());
+                }
             }
-        }
 
-        if (this.actualBlock != null)
-            if (this.actualBlock.getVisible())
-                this.actualBlock.changeNbAnimation();
-            else if (!this.actualBlock.getActif())
-                character.setStun(false);
+            if (this.actualBlock != null)
+                if (this.actualBlock.getVisible())
+                    this.actualBlock.changeNbAnimation();
+                else if (!this.actualBlock.getActif())
+                    character.setStun(false);
+        }
     }
 
     public AnimateBlock getActualBlock() {
@@ -150,15 +164,42 @@ public class Jeu implements FrameListener {
      */
     public void frameUpdate() {
         ArrayList<Character> chars = this.getMap().getCharacters();
-        for(Character c: chars) {
+        for (Character c : chars) {
             if (c instanceof NonPlayableCharacter) {
                 NonPlayableCharacter npc = (NonPlayableCharacter) c;
                 if (MoteurGraphique.getFrame() % 5 == 0) {
-                    final int rand = (int)Math.floor(Math.random() * 4);
+                    final int rand = (int) Math.floor(Math.random() * 4);
                     this.commande(npc, new MovingSimple(rand));
                 }
             }
         }
+    }
+
+    /**
+     * Methode qui permet de changer de map
+     */
+    public void changerMap() {
+        try {
+            this.maps.remove(0);
+            if (this.maps.size() == 0)
+                this.fin = true;
+            else {
+                this.carte = this.maps.get(0);
+                this.j.setPosition(new Position(1, 1));
+                this.carte.verify();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     * Methode qui retourne si le jeu est fini
+     * 
+     * @return fin
+     */
+    public boolean getFin() {
+        return this.fin;
     }
 
 }

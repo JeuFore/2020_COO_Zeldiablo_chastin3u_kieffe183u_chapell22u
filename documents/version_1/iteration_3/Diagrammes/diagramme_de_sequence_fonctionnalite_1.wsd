@@ -1,0 +1,16 @@
+@startuml
+title Diagramme de séquence : déplacement des monstres
+
+MoteurGraphique -> FrameListenerUpdater : call()
+loop pour toutes les classes qui impléméntent FrameListener
+    FrameListenerUpdater -> Jeu : frameUpdate()
+    create MovingProperty
+    Jeu -> MovingProperty : new
+    Jeu <-- MovingProperty : MovingSimple
+    Jeu -> Jeu : commande(monstre, movingSimple)
+    Jeu -> Jeu : move(x, y, FacingPropoery.FACING_UP, monstre)
+    Jeu -> Jeu : gererCollision(x, y, monstre)
+    FrameListenerUpdater <-- Jeu
+end
+MoteurGraphique <-- FrameListenerUpdater
+@enduml
