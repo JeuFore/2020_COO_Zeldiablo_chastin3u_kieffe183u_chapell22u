@@ -20,7 +20,6 @@ public class Map {
      * variable qui contient la carte d'un niveau
      */
     private ArrayList<Row> map;
-
     /**
      * Variable qui contient les personnages sur cette map
      */
@@ -53,6 +52,7 @@ public class Map {
 
     /**
      * Methode qui ajoute un Character a la map
+     * 
      * @param c character a ajouter
      */
     public void ajouterCharacter(Character c) {
@@ -61,6 +61,7 @@ public class Map {
 
     /**
      * Methode qui supprime un character a la map, a la place n
+     * 
      * @param n place du character a supprimer
      */
     public void supprimerCharacter(int n) {
@@ -83,9 +84,9 @@ public class Map {
      */
     public Map(File file) {
         this.setCharacters(new ArrayList<Character>());
-        this.characters.add(new Monster("Robert", 5, 5, 5));
-        this.characters.add(new Monster("Robert_2", 5, 5, 5));
-        this.characters.add(new Monster("Robert_3", 5, 5, 5));
+        for (int i = 0; i < 15; i++) {
+            this.characters.add(new Monster("Robert" + i, 5, (int) (Math.random() * 30), (int) (Math.random() * 30)));
+        }
         this.map = load(file);
     }
 
@@ -179,38 +180,42 @@ public class Map {
         }
         return rows;
     }
-    
+
     /**
      * Methode de gestion des attaques des personnages dans la map
+     * 
      * @param x,y,c,dmg
      * 
      */
     public void gererAttaque(int x, int y, Character c) {
-    		for (int i = 0 ; i < characters.size(); i++) {
-        		if(c instanceof Wizard) {
-        			if(etreACote(0,2,c,i) || etreACote(2,0,c,i) || etreACote(0,-2,c,i) || etreACote(-2,0,c,i)) {
-            			if(((Wizard)c).getMana() > 0) {
-            				characters.get(i).changerVie(-c.getDmg());
-            				((Wizard)c).changerMana(-1);
-            				}
-        				}
-        			} else {
-        		if(etreACote(0,1,c,i) || etreACote(1,0,c,i) || etreACote(0,-1,c,i) || etreACote(-1,0,c,i)) {
-        			characters.get(i).changerVie(-c.getDmg());
-        			}
-        		}
-   			}
-    	}
-    
-    public boolean etreACote(int fpX, int fpY, Character c, int indice) {
-    	boolean res = false;
-    	  	if (characters.get(indice).getPosition().getX() == c.getPosition().getX()+fpX && characters.get(indice).getPosition().getY() == c.getPosition().getY() +fpY){
-    	  		res = true;
-        	} else res = false;
-    	return res;
+        for (int i = 0; i < characters.size(); i++) {
+            if (c instanceof Wizard) {
+                if (etreACote(0, 2, c, i) || etreACote(2, 0, c, i) || etreACote(0, -2, c, i)
+                        || etreACote(-2, 0, c, i)) {
+                    if (((Wizard) c).getMana() > 0) {
+                        characters.get(i).changerVie(-c.getDmg());
+                        ((Wizard) c).changerMana(-1);
+                    }
+                }
+            } else {
+                if (etreACote(0, 1, c, i) || etreACote(1, 0, c, i) || etreACote(0, -1, c, i)
+                        || etreACote(-1, 0, c, i)) {
+                    characters.get(i).changerVie(-c.getDmg());
+                }
+            }
+        }
     }
-    
-    
+
+    public boolean etreACote(int fpX, int fpY, Character c, int indice) {
+        boolean res = false;
+        if (characters.get(indice).getPosition().getX() == c.getPosition().getX() + fpX
+                && characters.get(indice).getPosition().getY() == c.getPosition().getY() + fpY) {
+            res = true;
+        } else
+            res = false;
+        return res;
+    }
+
     /**
      * Methode qui verifie si tous les personnages ne sont pas dans les murs. Si
      * oui, renvoie false et supprime le personnage qui bloque.
@@ -228,7 +233,7 @@ public class Map {
         for (Character c : tempChars) {
             this.characters.remove(c);
         }
-        return tempChars.size() == 0;
+        return tempChars.size() > 0;
     }
 
 }

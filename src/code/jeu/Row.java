@@ -73,6 +73,9 @@ public class Row {
             case 4:
                 temp = new Fire();
                 break;
+            case 5:
+                temp = new Victory();
+                break;
             default:
                 break;
         }

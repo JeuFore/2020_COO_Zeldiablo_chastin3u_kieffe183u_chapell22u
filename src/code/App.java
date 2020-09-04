@@ -28,6 +28,8 @@ public class App {
 
         Sprites.chargerFeuille("heal", "./documents/images/heal.png", 1, 10);
 
+        Sprites.chargerFeuille("victory", "./documents/images/victory.png", 1, 1);
+
         Jeu jeu = new Jeu();
 
         FrameListenerUpdater.addListener(jeu);
@@ -38,7 +40,7 @@ public class App {
         MoteurGraphique m = new MoteurGraphique(jeuControleur, graphique);
 
         Audio.play("src/audio/theme.wav");
-        m.lancerJeu(900, 900, 10);
+        m.lancerJeu(900, 900, 6);
         
     }
 }

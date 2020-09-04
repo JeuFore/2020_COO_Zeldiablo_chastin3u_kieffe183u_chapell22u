@@ -1,7 +1,6 @@
 package code.moteurJeu;
 
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import code.moteurJeu.moteur.DessinAbstract;
 

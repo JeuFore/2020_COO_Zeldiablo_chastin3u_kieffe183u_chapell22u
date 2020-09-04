@@ -17,7 +17,7 @@ public class JeuControleur implements JeuAbstract {
      * @return true si et seulement si le jeu est fini
      */
     public boolean etreFini() {
-        return false;
+        return this.jeu.getFin();
     }
 
     public String evoluer(CClavier clavier, CSouris souris) {
