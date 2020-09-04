@@ -27,7 +27,7 @@ public class Jeu implements FrameListener {
     public Jeu() {
         // Scanner sc = new Scanner(System.in);
         this.j = new Wizard("Bob", 10, 1,1, 10);
-        File file = new File("src/map/level_3.txt");
+        File file = new File("src/map/level_1.txt");
         this.carte = new Map(file);
         this.carte.verify();
         this.actualBlock = null;

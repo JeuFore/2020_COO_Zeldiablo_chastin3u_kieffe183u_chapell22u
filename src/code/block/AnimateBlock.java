@@ -23,13 +23,13 @@ public class AnimateBlock extends Block {
      * @param life Vie qu'enleve ou rajoute le block
      * @param traversable Attribut qui permet de savoir si il est traversable
      */
-    public AnimateBlock(String nom, int id, int nbAnimation, int life, boolean traversable) {
+    public AnimateBlock(String nom, int id, int nbAnimation, int life, boolean traversable, boolean visible) {
         super(nom, 0, id, traversable);
         this.animation = 0;
         this.nbAnimation = nbAnimation- 1;
         this.actif = true;
         this.life = life;
-        setVisible(false);
+        setVisible(visible);
     }
 
     /**
