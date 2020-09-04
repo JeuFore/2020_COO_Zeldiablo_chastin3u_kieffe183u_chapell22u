@@ -5,12 +5,6 @@ import code.moteurJeu.sprite.Sprites;
 import code.moteurJeu.*;
 
 import code.jeu.Jeu;
-import code.jeu.Map;
-
-import java.util.ArrayList;
-
-import code.characters.*;
-import code.characters.Character;
 
 public class App {
 
