@@ -189,7 +189,6 @@ package jeu {
         + getMap() : Map
         + getFin() : boolean
         + changerMap() : void
-        
         + gererDeclencheur(int,int,Character)
         + getActualBlock() : AnimateBlock
         + frameUpdate() : void
@@ -198,6 +197,4 @@ package jeu {
 class App {
     {static} + main(String[]) throws InterruptedException : void
 }
-
-
 @enduml
